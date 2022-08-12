@@ -29,12 +29,15 @@ export function reverseFly(node, params) {
 	const style = getComputedStyle(node);
 	const transform = style.transform === 'none' ? '' : style.transform;
 
-	node.style.transform = "${transform} translate(${startX}px, ${startY}px);";
-
 	return {
 		delay,
 		duration,
 		easing,
-		css: t => `transform: ${transform} translate(${startX - startX * t}px, ${startY - startY * t}px)`
+		css: t => `
+			${startX == "vcenter" ? "left: 50vw;" : ""}
+			${startY == "vcenter" ? "top: 50vh;" : ""}
+
+			transform: ${transform} translate(${startX == "vcenter" ? `-50%` : `${startX - startX * t}px`}, ${"vcenter" ? `-50%` : `${startX - startX * t}px`});
+		`
 	};
 }

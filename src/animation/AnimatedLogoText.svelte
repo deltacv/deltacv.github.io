@@ -8,7 +8,7 @@
 </script>
 
 <div class="parent">
-    <div class="icon" in:reverseFly="{{delay: 2000, duration: 1400, startX: 180}}">
+    <div class="icon" in:reverseFly="{{delay: 2000, duration: 1400, startX: 'vcenter'}}">
         <AnimatedLogo/>
     </div>
     <div class="text">
@@ -18,10 +18,15 @@
 
 <style>
     .icon {
-        width: 3.5em;
-        height: 3.5em;
+        width: max(6vw, 20vh);
         margin-right: 1em;
         margin-top: 0.5em;
+    }
+
+    .text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .parent {
