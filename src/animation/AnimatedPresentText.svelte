@@ -9,7 +9,7 @@
 
 <style>
     h1, p {
-        font-family: 'Segoe UI';
+        font-family: "Noto Sans", sans-serif;
         margin: 0px;
         padding: 0px; 
     }
