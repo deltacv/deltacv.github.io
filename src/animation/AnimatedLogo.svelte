@@ -18,6 +18,6 @@
 
 <style>
     svg {
-        width: fit-content;
+        width: 100%;
     }
 </style>

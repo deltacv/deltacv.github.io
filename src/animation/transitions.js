@@ -1,4 +1,4 @@
-import { cubicOut, fly } from 'svelte/easing';
+import { cubicOut } from 'svelte/easing';
 
 export function expand(node, params) {
 	const {
