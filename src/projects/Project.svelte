@@ -72,6 +72,7 @@
 
     .footer h2 {
         text-decoration: none;
+        font-family: 'Verdana';
         color: white;
         margin: 0; /* Removes extra space around the title */
         font-size: 16px; /* Adjust font size to fit */
