@@ -35,7 +35,7 @@
 	<!-- Footer Section -->
 	<footer class="footer">
 	  <div class="contact-info">
-		<p>Contact us at: <a href="mailto:serivesmejia@deltacv.org">serivesmejia@deltacv.org</a>. Follow us on GitHub: <a href="https://github.com/deltacv" target="_blank">deltacv</a></p>
+		<p>Contact us at: <a href="mailto:development@deltacv.org">development@deltacv.org</a>. Follow us on GitHub: <a href="https://github.com/deltacv" target="_blank">deltacv</a></p>
 	  </div>
 	</footer>
   </div>
