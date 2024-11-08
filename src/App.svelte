@@ -75,18 +75,18 @@
 	  align-items: center;
 	  width: 100%;
 	}
-  
+	
 	.content {
-	  margin-top: 20vh; /* Add some space between the header and the content */
-	  width: 100%;
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	  flex-wrap: wrap; /* Allow cards to wrap to the next line */
-	  gap: 30px; /* Add space between cards */
-	  flex: 1; /* Make sure content takes up remaining space */
+      margin-top: 20vh; /* Default space for larger screens */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap; /* Allow cards to wrap to the next line */
+      gap: 30px; /* Add space between cards */
+  	  flex: 1; /* Make sure content takes up remaining space */
 	}
-  
+
 	/* Footer styling */
 	.footer {
 	  width: 100%;
@@ -113,15 +113,17 @@
 	}
   
 	@media (max-width: 768px) {
-	  .header {
-		height: max(30vw, 30vh);
-	  }
-	  .content {
-		gap: 10px; /* Smaller gap on smaller screens */
-	  }
-  
-	  .footer {
-		padding: 15px 0;
-	  }
-	}
-  </style>
+  	  .header {
+    	height: max(30vw, 30vh);
+  	  }
+
+    .content {
+       margin-top: 35vh; /* Increase the margin for smaller screens */
+       gap: 10px; /* Smaller gap on smaller screens */
+    }
+
+    .footer {
+      padding: 15px 0;
+    }
+  }
+</style>
