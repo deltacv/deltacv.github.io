@@ -48,6 +48,7 @@
         padding: 10px;
         border-radius: 20px;
         box-sizing: border-box;
+        backdrop-filter: blur(3px); /* Adds a blur effect to the overlay */
     }
 
     .card:hover .overlay {
@@ -72,7 +73,7 @@
 
     .footer h2 {
         text-decoration: none;
-        font-family: 'Verdana';
+        font-family: "Inter", sans-serif;;
         color: white;
         margin: 0; /* Removes extra space around the title */
         font-size: 16px; /* Adjust font size to fit */
