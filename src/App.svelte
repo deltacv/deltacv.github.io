@@ -28,7 +28,7 @@
 		title="PaperVision" 
 		description="Create your custom OpenCV algorithms using a user-friendly node editor interface inspired by Blender and Unreal Engine blueprints."
 		gifSrc="/papervision.gif"
-		href="https://github.com/deltacv/PaperVision"
+		href="https://docs.deltacv.org/papervision"
 	  />
 	</div>
   
