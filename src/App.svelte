@@ -51,6 +51,13 @@
 		gifSrc="/papervision.gif"
 		href="https://github.com/deltacv/PaperVision"
 	  />
+
+	  <Project 
+		  title="Minecraft Server" 
+		  description="By FIRST alumni, for FIRST students. Join our Minecraft server to hang out and play unique modes!"	
+		  gifSrc="/minecraft.gif"
+		  href="/minecraft"
+	  />
 	</div>
 
 	<footer class="footer">
