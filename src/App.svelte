@@ -38,26 +38,19 @@
 	</div>
 
 	<div class="content" in:fade={{duration: 1000}}>
-		<Project 
-			title="EOCV-Sim" 
-			description="Develop, test, and tune your EasyOpenCV pipelines directly on your computer with a simple GUI!"
-			gifSrc="/eocvsim.png"
-			href="https://docs.deltacv.org/eocv-sim"
-		/>
-
-		<Project 
-			title="PaperVision" 
-			description="Create your custom OpenCV algorithms using a user-friendly node editor interface inspired by Blender and Unreal Engine blueprints."
-			gifSrc="/papervision.gif"
-			href="https://github.com/deltacv/PaperVision"
-		/>
-
-		<Project 
-			title="Minecraft Server" 
-			description="By FIRST alumni, for FIRST students. Join our Minecraft server to hang out and play unique modes!"	
-			gifSrc="/minecraft.gif"
-			href="/minecraft"
-		/>
+	  <Project 
+		title="EOCV-Sim" 
+		description="Develop, test, and tune your EasyOpenCV pipelines directly on your computer with a simple GUI!"
+		gifSrc="/eocvsim.png"
+		href="https://docs.deltacv.org/eocv-sim"
+	  />
+  
+	  <Project 
+		title="PaperVision" 
+		description="Create your custom OpenCV algorithms using a user-friendly node editor interface inspired by Blender and Unreal Engine blueprints."
+		gifSrc="/papervision.gif"
+		href="https://github.com/deltacv/PaperVision"
+	  />
 	</div>
 
 	<footer class="footer">
