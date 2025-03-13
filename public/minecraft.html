@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE DELTAMC MINECRAFT SERVER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container h1 {
+            margin-bottom: 20px;
+        }
+
+        .container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .ip {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #ffcc00;
+            color: #2b2b2b;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            margin-bottom: 15px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('minecraft.gif') no-repeat center center;
+            background-size: cover; 
+            background-position: center 70%; /* Offset the background by 20% from the top */
+            opacity: 0.5;
+            z-index: -1; /* Ensures that the background stays behind the content */
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(13, 17, 23, 0.6);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .ip {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        .notice {
+            font-size: 1em;
+            color: gray;
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #ffcc00;
+            color: #2b2b2b;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .copy-message {
+            margin-top: 10px;
+            color: #4CAF50;
+            font-weight: bold;
+            display: none;
+        }
+
+        #hidden-ip {
+            position: absolute;
+            left: -9999px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .server-info {
+            margin-top: 1px;
+            font-size: 1.1em;
+            color: #f1f1f1;
+        }
+
+        .server-info p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>THE DELTAMC SERVER</h1>
+        <img src="/deltamc.png" alt="DeltaMC Logo">
+        
+        <!-- New section with server details -->
+        <div class="server-info">
+            <p>- Limited capacity reserved for FIRST-affiliated people.</p>
+            <p>- Connect with other teams from different categories.</p>
+            <p>- Play with gracious professionalism.</p>
+            <p>- Unique SMP server, DeadWorld!</p>
+        </div>
+
+        <p class="ip">Crossplatform IP: <u>play.deltacv.org</u></p>
+        <p class="notice"><u>Only for non-cracked Java/Bedrock to ensure safety.</u></p>
+        <button class="btn" onclick="copyIP()">Join Now</button>
+        <p class="copy-message" id="copy-message">✅ IP copied to clipboard!</p>
+        <input type="text" value="play.deltacv.org" id="hidden-ip" readonly>
+    </div>
+
+    <script>
+        function copyIP() {
+            const ip = "play.deltacv.org";
+            const message = document.getElementById("copy-message");
+            const hiddenInput = document.getElementById("hidden-ip");
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(ip).then(() => {
+                    showCopyMessage();
+                }).catch(err => {
+                    console.error("Clipboard API failed, using fallback: ", err);
+                    fallbackCopy();
+                });
+            } else {
+                fallbackCopy();
+            }
+
+            function fallbackCopy() {
+                hiddenInput.select();
+                hiddenInput.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+                showCopyMessage();
+            }
+
+            function showCopyMessage() {
+                message.style.display = "block";
+                setTimeout(() => {
+                    message.style.display = "none";
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
