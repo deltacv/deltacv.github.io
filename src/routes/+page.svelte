@@ -1,8 +1,8 @@
 <script>
-	import AnimatedLogoText from './animation/AnimatedLogoText.svelte';
+	import AnimatedLogoText from '$lib/header/AnimatedLogoAndText.svelte';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import Project from './projects/Project.svelte';
+	import Project from '$lib/projects/Project.svelte';
 
 	let ready = false;
 	let imagesLoaded = 0;
