@@ -16,11 +16,15 @@
 
     p {
         margin-right: 1vmin;
-        font-size: 5vmin;
+        /* Min: 1.1rem (17.6px), Preferred: 2.9vw, Max: 2.2rem (35.2px) */
+        font-size: clamp(1.1rem, 2.9vw, 2.2rem);
+        font-weight: 400;
     }
 
     h1 {
         margin-right: 1vmin;
-        font-size: 3vmax;
+        /* Min: 1.2rem (19.2px), Preferred: 2.8vw, Max: 2.5rem (40px) */
+        font-size: clamp(1.2rem, 2.8vw, 2.5rem);
+        font-weight: 800;
     }
 </style>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="46.83 106.92 88.48 86.19">
+  <ellipse
+    cx="91.070885"
+    cy="150.01309"
+    rx="40.574055"
+    ry="39.429546"
+    fill="none"
+    stroke="#f9f7f5"
+    stroke-width="7.332"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  
+  <path
+    d="M 65.519853,141.83701 A 31.589579,29.863394 0 0 1 83.92804,123.6729"
+    fill="none"
+    stroke="#f9f7f5"
+    stroke-width="4.323"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  
+  <path
+    d="M 388.23175,540.71277 217.00189,540.08122 303.16376,392.10759 Z"
+    fill="none"
+    stroke="#f9f7f5"
+    stroke-width="27.7115"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    transform="matrix(0.17568139,0,0,0.1721789,37.937662,68.520131)"
+  />
+</svg>

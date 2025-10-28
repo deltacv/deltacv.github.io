@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* src/lib/global.css */
+:global(body) {
+	margin: 0;
+	padding: 0;
+	background-color: #000;
+	font-family: Arial, sans-serif;
+	height: 100%;
+}
