@@ -4,7 +4,7 @@
 
     // 1. IMPORTAMOS IMÁGENES
     import eocvsim_img from "$lib/assets/eocvsim.png";
-    import eocvsim_1_img from "$lib/assets/eocvsim-1.png";
+    import eocvsim_1_img from "$lib/assets/eocvsim-tuner.gif";
 
     // 2. IMPORTAMOS SVELTESPLIDE (El carrusel)
     import { Splide, SplideSlide } from "@splidejs/svelte-splide";
@@ -157,7 +157,7 @@
 
     <section class="my-24">
         <h2 class="text-center text-4xl font-bold tracking-tighter">
-            Everything you need to succeed.
+            Everything you need to code.
         </h2>
         <p class="text-center mt-3 text-lg text-gray-400">
             From live tuning to node-based editing.

@@ -3,8 +3,8 @@
     import Feature from "$lib/projects/Feature.svelte";
     
     // 1. IMPORTAMOS IMÁGENES
-    import papervision_nodes_img from "$lib/assets/papervision.png";
-    import eocvsim_tuner_img from "$lib/assets/eocvsim-1.png";
+    import papervision_nodes_img from "$lib/assets/papervision-1.gif";
+    import papervision_nodes_1_img from "$lib/assets/papervision.gif";
 
     // 2. IMPORTAMOS SVELTESPLIDE (El carrusel)
     import { Splide, SplideSlide } from "@splidejs/svelte-splide";
@@ -102,36 +102,6 @@
         </div>
     </section>
 
-    <section class="max-w-2xl w-full mx-auto mt-16 mb-24">
-        <Splide options={splideOptions} aria-label="PaperVision Screenshots">
-            <SplideSlide class="flex items-center">
-                <figure>
-                    <img
-                        src={papervision_nodes_img}
-                        alt="PaperVision node-based editor"
-                        class="rounded-lg shadow-2xl shadow-amber-900/20 border border-gray-700"
-                    />
-                    <figcaption class="mt-2 text-sm text-gray-400">
-                        Visually build pipelines in the node editor
-                    </figcaption>
-                </figure>
-            </SplideSlide>
-
-            <SplideSlide class="flex items-center">
-                <figure>
-                    <img
-                        src={eocvsim_tuner_img}
-                        alt="EOCV-Sim variable tuner"
-                        class="rounded-lg shadow-2xl shadow-amber-900/20 border border-gray-700"
-                    />
-                    <figcaption class="mt-2 text-sm text-gray-400">
-                        Seamlessly integrates with the EOCV-Sim tuner
-                    </figcaption>
-                </figure>
-            </SplideSlide>
-        </Splide>
-    </section>
-
     <section class="my-24">
         <div
             class="glass-card rounded-2xl p-8 md:p-12 shadow-2xl shadow-amber-900/10"
@@ -140,10 +110,10 @@
                 What is PaperVision?
             </h2>
             <p class="mt-4 text-lg text-gray-300 leading-relaxed">
-                PaperVision is a visual, node-based pipeline editor built
+                PaperVision is a node-based pipeline editor built
                 <span class="text-amber-400 font-medium">directly into EOCV-Sim</span
                 >. It lets you prototype complex vision algorithms without
-                writing lines of code. Connect nodes, adjust parameters, and see
+                writing lines of code.<br/>Connect nodes, adjust parameters, and see
                 your results live.
             </p>
             <p class="mt-4 text-lg text-gray-300 leading-relaxed">
@@ -154,6 +124,37 @@
                 pipelines for your FTC robot.
             </p>
         </div>
+    </section>
+
+    
+    <section class="max-w-2xl w-full mx-auto mt-16 mb-24">
+        <Splide options={splideOptions} aria-label="PaperVision Screenshots">
+            <SplideSlide class="flex items-center">
+                <figure>
+                    <img
+                        src={papervision_nodes_1_img}
+                        alt="PaperVision node-based editor"
+                        class="rounded-lg shadow-2xl shadow-amber-900/20 border border-gray-700"
+                    />
+                    <figcaption class="mt-2 text-sm text-gray-400">
+                        Build pipelines in the node editor
+                    </figcaption>
+                </figure>
+            </SplideSlide>
+
+            <SplideSlide class="flex items-center">
+                <figure>
+                    <img
+                        src={papervision_nodes_img}
+                        alt="EOCV-Sim variable tuner"
+                        class="rounded-lg shadow-2xl shadow-amber-900/20 border border-gray-700"
+                    />
+                    <figcaption class="mt-2 text-sm text-gray-400">
+                        Seamlessly visualize and tune your pipeline in the editor
+                    </figcaption>
+                </figure>
+            </SplideSlide>
+        </Splide>
     </section>
 
     <section class="my-24">
@@ -177,8 +178,8 @@
             />
             <Feature
                 icon={SlidersHorizontal}
-                title="Integrated Variable Tuner"
-                desc="Exposes your pipeline's variables to the EOCV-Sim tuner automatically."
+                title="Live Parameter Tuning"
+                desc="Allows you to adjust pipeline parameters in real-time."
             />
             <Feature
                 icon={Code2}
@@ -187,13 +188,13 @@
             />
             <Feature
                 icon={Tag}
-                title="AprilTag & Custom Detections"
-                desc="Includes pre-built nodes for AprilTag, color thresholding, and more."
+                title="Custom Detections"
+                desc="Includes pre-built nodes for blob detectors, color thresholding, and more."
             />
             <Feature
                 icon={Video}
                 title="Supports All Input Sources"
-                desc="Works seamlessly with all EOCV-Sim sources, including webcams, images, and videos."
+                desc="Works seamlessly with all image sources, including webcams, images, and videos."
             />
         </div>
     </section>

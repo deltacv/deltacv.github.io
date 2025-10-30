@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import BlogCard from "$lib/components/BlogCard.svelte";
+    import BlogCard from "$lib/blog/BlogCard.svelte";
 
     // Dynamically import all blog posts (.svx files)
     const modules = import.meta.glob("../../../posts/*.svx", { eager: true });
@@ -44,7 +44,7 @@
 {#if ready}
   <div class="content">
     <h1>the deltacv blog</h1>
-    <p>insights into our development process</p>
+    <p>insights & learnings our development process</p>
 
     <div class="cards">
       {#each blogPosts as post}
