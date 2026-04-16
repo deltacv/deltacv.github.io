@@ -3,7 +3,7 @@
     import Feature from "$lib/projects/Feature.svelte";
 
     import { Splide, SplideSlide } from "@splidejs/svelte-splide";
-
+ 
     import "@splidejs/svelte-splide/css";
 
     // 3. IMPORTAMOS LOS ICONOS
