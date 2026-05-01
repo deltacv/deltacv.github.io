@@ -158,19 +158,6 @@
                     class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10"
                 >
                     <div>
-                        <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-sm font-medium mb-6 border border-amber-500/20"
-                        >
-                            <span class="relative flex h-2 w-2">
-                                <span
-                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"
-                                ></span>
-                                <span
-                                    class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"
-                                ></span>
-                            </span>
-                            OpenCV Node Editor
-                        </div>
                         <h2
                             class="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 tracking-tight"
                         >
