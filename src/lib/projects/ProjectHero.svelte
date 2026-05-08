@@ -129,7 +129,11 @@
             }
         };
 
-        window.addEventListener("wheel", handleWheel, { passive: false });
+        // Disable scroll-snap on mobile — causes lag on touch devices
+        const isMobile = window.matchMedia("(pointer: coarse)").matches;
+        if (!isMobile) {
+            window.addEventListener("wheel", handleWheel, { passive: false });
+        }
         return () => {
             window.removeEventListener("wheel", handleWheel);
             clearTimeout(snapTimeout);

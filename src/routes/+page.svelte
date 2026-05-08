@@ -124,8 +124,8 @@
         rgba(139, 148, 158, 0.015),
         transparent 30%
       ),
-      linear-gradient(rgba(48, 54, 61, 0.28) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(48, 54, 61, 0.28) 1px, transparent 1px);
+      linear-gradient(rgba(48, 54, 61, 0.50) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(48, 54, 61, 0.50) 1px, transparent 1px);
     background-size:
       100% 100%,
       100% 100%,

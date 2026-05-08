@@ -111,10 +111,8 @@
             const invDist = distance > 0 ? 1 / distance : 0;
             const norm = 1 - distance / 800;
             const factor = norm > 0 ? norm * norm * Math.sqrt(norm) : 0;
-            const amplitude = isMoving ? 4 : 0.5;
-            const waveOffset = Math.sin(now / 280 - distance / 40) * amplitude;
             const strength = massive ? 25 : 18;
-            const base = strength * factor + waveOffset;
+            const base = strength * factor;
             lx = tx = mdx * invDist * base + lerpVX * 0.45;
             ly = ty = mdy * invDist * base + lerpVY * 0.45;
         }
@@ -252,13 +250,6 @@
             if (layout.rect.width) {
                 rippleX = mx - layout.rect.left;
                 rippleY = my - layout.rect.top;
-                const ddx = rippleX - lastRippleX;
-                const ddy = rippleY - lastRippleY;
-                if (ddx * ddx + ddy * ddy > 48400 && isNear) { // 220² = 48400
-                    spawnRipple(0.5, 1400, 0, "trail", 450, 50);
-                    lastRippleX = rippleX;
-                    lastRippleY = rippleY;
-                }
             }
         } else {
             vx *= 0.85; vy *= 0.85; rippleSpeed *= 0.85;
