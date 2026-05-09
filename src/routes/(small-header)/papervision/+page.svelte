@@ -629,7 +629,11 @@
             <p
                 class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl text-center leading-relaxed text-balance"
             >
-                PaperVision's main distribution is pre-bundled with <a href="/eocv-sim" class="text-amber-400 hover:text-amber-300 font-bold whitespace-nowrap transition-colors decoration-amber-400/30 hover:underline underline-offset-4">EOCV-Sim</a>. Check the instructions below to get started.
+                PaperVision's main distribution is pre-bundled with <a
+                    href="/eocv-sim"
+                    class="text-amber-400 hover:text-amber-300 font-bold whitespace-nowrap transition-colors decoration-amber-400/30 hover:underline underline-offset-4"
+                    >EOCV-Sim</a
+                >. Check the instructions below to get started.
             </p>
             <a
                 href="https://docs.deltacv.org/papervision/downloading-papervision"
