@@ -56,14 +56,14 @@
 
         // Sync with video duration
         if (splideRef?.splide) {
-            splideRef.splide.on('active', (slide: any) => {
-                const video = slide.slide.querySelector('video');
+            splideRef.splide.on("active", (slide: any) => {
+                const video = slide.slide.querySelector("video");
                 const autoplay = splideRef.splide.Components.Autoplay;
-                
+
                 if (video) {
                     autoplay.pause();
                     video.onended = () => {
-                        splideRef.splide.go('>');
+                        splideRef.splide.go(">");
                         autoplay.play();
                     };
                 } else {
@@ -96,7 +96,7 @@
         typingWords={["create", "prototype", "tune", "export"]}
         introPreText="Visually"
         introPostText="your computer vision algorithms."
-        scrollIndicatorColorClass="text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]"
+        scrollIndicatorColorClass="text-amber-400"
         videoFit="contain"
     >
         {#snippet actions()}
@@ -106,11 +106,14 @@
                     href="#integration"
                     onclick={(e) => {
                         e.preventDefault();
-                        document
-                            .getElementById("integration")
-                            ?.scrollIntoView({ behavior: "smooth" });
+                        e.stopPropagation();
+                        window.dispatchEvent(new Event("pause-hero-scroll"));
+                        document.getElementById("integration")?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                        });
                     }}
-                    class="w-full px-8 py-3.5 font-bold text-gray-900 bg-amber-500 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] hover:bg-amber-400 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2.5"
+                    class="w-full px-8 py-3.5 font-bold text-gray-900 bg-amber-500 rounded-xl hover:bg-amber-400 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2.5"
                 >
                     <Download size={20} />
                     Download
@@ -141,25 +144,15 @@
 
     <main class="container mx-auto max-w-6xl px-6 py-24 text-gray-100">
         <section class="my-32 relative">
-            <!-- Decorative Glow -->
             <div
-                class="absolute inset-0 max-w-5xl mx-auto -z-10 bg-amber-600/10 blur-[100px] rounded-full"
-            ></div>
-
-            <div
-                class="glass-card rounded-3xl p-8 md:p-14 shadow-2xl shadow-amber-900/20 max-w-5xl mx-auto relative overflow-hidden group"
+                class="rounded-xl p-8 md:p-14 border border-gray-800 bg-[#0d1117] max-w-5xl mx-auto relative overflow-hidden group"
             >
-                <!-- Subtle internal shine effect -->
-                <div
-                    class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                ></div>
-
                 <div
                     class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10"
                 >
                     <div>
                         <h2
-                            class="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 tracking-tight"
+                            class="text-3xl md:text-5xl font-extrabold text-white tracking-tight"
                         >
                             What is PaperVision?
                         </h2>
@@ -168,8 +161,7 @@
                         >
                             PaperVision is a node-based pipeline editor built
                             for
-                            <span
-                                class="text-amber-400 font-semibold drop-shadow-[0_0_12px_rgba(251,191,36,0.4)]"
+                            <span class="text-amber-400 font-semibold"
                                 >beginners and experts alike</span
                             >. It bridges the gap between conceptual design and
                             executed algorithms, letting you prototype complex
@@ -180,10 +172,10 @@
 
                     <div class="flex flex-col gap-4">
                         <div
-                            class="flex items-start gap-5 bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-gray-700/50 backdrop-blur-md hover:border-amber-500/30 transition-colors"
+                            class="flex items-start gap-5 bg-[#12141a] p-6 rounded-lg border border-gray-800 hover:border-amber-500/30 transition-colors"
                         >
                             <div
-                                class="p-3 bg-amber-500/20 text-amber-400 rounded-xl shadow-inner shadow-amber-500/20"
+                                class="p-3 bg-amber-500/20 text-amber-400 rounded-md shadow-inner shadow-amber-500/20"
                             >
                                 <Zap size={24} />
                             </div>
@@ -199,7 +191,7 @@
                             </div>
                         </div>
                         <div
-                            class="flex items-start gap-5 bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-gray-700/50 backdrop-blur-md hover:border-blue-500/30 transition-colors"
+                            class="flex items-start gap-5 bg-[#12141a] p-6 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition-colors"
                         >
                             <div
                                 class="p-3 bg-blue-500/20 text-blue-400 rounded-xl shadow-inner shadow-blue-500/20"
@@ -373,7 +365,7 @@
                                 class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 transition-transform duration-500 delay-75 backdrop-blur-md relative z-10 ml-8 md:ml-0 md:mt-10"
                             >
                                 <div
-                                    class="hidden md:block absolute left-[-6px] top-[16px] w-2.5 h-2.5 bg-amber-500 rounded-full border border-gray-800 shadow-[0_0_8px_rgba(245,158,11,0.8)] opacity-50 group-hover/pv:opacity-100 transition-opacity"
+                                    class="hidden md:block absolute left-[-6px] top-[16px] w-2.5 h-2.5 bg-amber-500 rounded-full border border-gray-800 opacity-50 group-hover/pv:opacity-100 transition-opacity"
                                 ></div>
                                 <div
                                     class="bg-emerald-500/20 text-emerald-400 text-[9px] uppercase font-bold tracking-wider px-2 py-1 rounded inline-block mb-3"
@@ -404,7 +396,7 @@
                             class="relative w-full max-w-[200px] bg-[linear-gradient(45deg,#1f2937_25%,transparent_25%,transparent_75%,#1f2937_75%,#1f2937),linear-gradient(45deg,#1f2937_25%,transparent_25%,transparent_75%,#1f2937_75%,#1f2937)] bg-[length:16px_16px] bg-[position:0_0,8px_8px] overflow-hidden rounded-xl border border-gray-700/50 shadow-inner h-32 flex items-center justify-center"
                         >
                             <div
-                                class="relative w-16 h-16 border-2 border-rose-500 rounded-lg rotate-12 group-hover/ui:rotate-45 transition-transform duration-1000 shadow-[0_0_15px_rgba(244,63,94,0.3)] backdrop-blur-sm"
+                                class="relative w-16 h-16 border-2 border-rose-500 rounded-lg rotate-12 group-hover/ui:rotate-45 transition-transform duration-1000 backdrop-blur-sm"
                             >
                                 <div
                                     class="absolute inset-2 border border-blue-500/50 border-dashed rounded flex flex-col items-center justify-center bg-blue-500/10"
@@ -448,7 +440,7 @@
                                         class="h-full bg-cyan-500/60 w-[35%] group-hover/tune:w-[75%] transition-all duration-1000 ease-out relative"
                                     >
                                         <div
-                                            class="absolute right-0 top-0 bottom-0 w-1.5 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)]"
+                                            class="absolute right-0 top-0 bottom-0 w-1.5 bg-cyan-400 rounded-full"
                                         ></div>
                                     </div>
                                 </div>
@@ -470,7 +462,7 @@
                                         class="h-full bg-rose-500/60 w-[60%] group-hover/tune:w-[25%] transition-all duration-1000 ease-out relative"
                                     >
                                         <div
-                                            class="absolute right-0 top-0 bottom-0 w-1.5 bg-rose-400 rounded-full shadow-[0_0_8px_rgba(244,63,94,0.8)]"
+                                            class="absolute right-0 top-0 bottom-0 w-1.5 bg-rose-400 rounded-full"
                                         ></div>
                                     </div>
                                 </div>
@@ -623,40 +615,29 @@
     <!-- Full-Width Integration Banner -->
     <section
         id="integration"
-        class="w-full bg-gradient-to-b from-[#05070a] to-[#0a0f18] border-t border-gray-800/60 py-32 px-6 relative overflow-hidden"
+        class="w-full bg-[#05070a] border-t border-gray-800/60 py-32 px-6 relative overflow-hidden"
     >
-        <div
-            class="absolute inset-0 bg-[linear-gradient(rgba(251,191,36,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(251,191,36,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"
-        ></div>
-        <div
-            class="absolute top-0 right-1/4 w-[40rem] h-[40rem] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none"
-        ></div>
-        <div
-            class="absolute bottom-0 left-1/4 w-[30rem] h-[30rem] bg-rose-500/5 rounded-full blur-[100px] pointer-events-none"
-        ></div>
         <div
             class="container mx-auto max-w-4xl relative z-10 text-center flex flex-col items-center"
         >
+            <div class="h-1 w-12 bg-amber-500 rounded-full mb-8"></div>
             <h2
-                class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-amber-100 to-gray-400 tracking-tight mb-8"
+                class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-8"
             >
                 Ready to build?
             </h2>
             <p
-                class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl text-center leading-relaxed"
+                class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl text-center leading-relaxed text-balance"
             >
-                PaperVision is built directly into <span
-                    class="text-amber-400 font-bold drop-shadow-[0_0_12px_rgba(251,191,36,0.5)]"
-                    >EOCV-Sim</span
-                >. You don't need a separate download—simply launch the
-                simulator and access the visual editor right from your
-                workspace.
+                PaperVision's main distribution is pre-bundled with <a href="/eocv-sim" class="text-amber-400 hover:text-amber-300 font-bold whitespace-nowrap transition-colors decoration-amber-400/30 hover:underline underline-offset-4">EOCV-Sim</a>. Check the instructions below to get started.
             </p>
             <a
-                href="/eocv-sim"
-                class="inline-flex items-center gap-3 px-10 py-5 font-bold text-gray-900 bg-gradient-to-r from-amber-400 to-amber-500 rounded-2xl shadow-[0_0_40px_rgba(245,158,11,0.4)] hover:shadow-[0_0_60px_rgba(245,158,11,0.6)] hover:-translate-y-1 transition-all w-fit text-lg"
+                href="https://docs.deltacv.org/papervision/downloading-papervision"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-3 px-10 py-5 font-bold text-gray-900 bg-gradient-to-r from-amber-400 to-amber-500 rounded-2xl hover:-translate-y-1 transition-all w-fit text-lg"
             >
-                Download EOCV-Sim
+                Download Instructions
                 <svg
                     class="w-6 h-6"
                     fill="none"
@@ -714,12 +695,5 @@
     /* Centra la paginación (círculos) */
     :global(.splide__pagination) {
         bottom: -1.5rem;
-    }
-
-    .glass-card {
-        background: rgba(13, 17, 23, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(55, 65, 81, 0.3);
     }
 </style>

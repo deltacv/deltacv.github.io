@@ -3,7 +3,7 @@
     import Feature from "$lib/projects/Feature.svelte";
 
     import { Splide, SplideSlide } from "@splidejs/svelte-splide";
- 
+
     import "@splidejs/svelte-splide/css";
 
     // 3. IMPORTAMOS LOS ICONOS
@@ -56,14 +56,14 @@
 
         // Sync with video duration
         if (splideRef?.splide) {
-            splideRef.splide.on('active', (slide: any) => {
-                const video = slide.slide.querySelector('video');
+            splideRef.splide.on("active", (slide: any) => {
+                const video = slide.slide.querySelector("video");
                 const autoplay = splideRef.splide.Components.Autoplay;
-                
+
                 if (video) {
                     autoplay.pause();
                     video.onended = () => {
-                        splideRef.splide.go('>');
+                        splideRef.splide.go(">");
                         autoplay.play();
                     };
                 } else {
@@ -96,7 +96,7 @@
         typingWords={["develop", "test", "tune"]}
         introPreText="A simple interface to"
         introPostText="your computer vision pipelines."
-        scrollIndicatorColorClass="text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]"
+        scrollIndicatorColorClass="text-cyan-400"
         videoFit="contain"
     >
         {#snippet actions()}
@@ -106,11 +106,14 @@
                     href="#download"
                     onclick={(e) => {
                         e.preventDefault();
-                        document
-                            .getElementById("download")
-                            ?.scrollIntoView({ behavior: "smooth" });
+                        e.stopPropagation();
+                        window.dispatchEvent(new Event('pause-hero-scroll'));
+                        document.getElementById("download")?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                        });
                     }}
-                    class="w-full px-8 py-3.5 font-bold text-gray-900 bg-cyan-400 rounded-xl shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] hover:bg-cyan-300 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2.5"
+                    class="w-full px-8 py-3.5 font-bold text-gray-900 bg-cyan-400 rounded-xl hover:bg-cyan-300 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2.5"
                 >
                     <Download size={20} />
                     Download EOCV-Sim
@@ -141,25 +144,15 @@
 
     <main class="container mx-auto max-w-6xl px-6 py-24 text-gray-100">
         <section class="my-32 relative">
-            <!-- Decorative Glow -->
             <div
-                class="absolute inset-0 max-w-5xl mx-auto -z-10 bg-cyan-600/10 blur-[100px] rounded-full"
-            ></div>
-
-            <div
-                class="glass-card rounded-3xl p-8 md:p-14 shadow-2xl shadow-cyan-900/20 max-w-5xl mx-auto relative overflow-hidden group"
+                class="rounded-xl p-8 md:p-14 border border-gray-800 bg-[#0d1117] max-w-5xl mx-auto relative overflow-hidden group"
             >
-                <!-- Subtle internal shine effect -->
-                <div
-                    class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                ></div>
-
                 <div
                     class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10"
                 >
                     <div>
                         <h2
-                            class="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 tracking-tight"
+                            class="text-3xl md:text-5xl font-extrabold text-white tracking-tight"
                         >
                             What is EOCV-Sim?
                         </h2>
@@ -167,8 +160,7 @@
                             class="mt-6 text-lg md:text-xl text-gray-300 leading-relaxed"
                         >
                             EOCV-Sim is a desktop tool built for
-                            <span
-                                class="text-cyan-400 font-semibold drop-shadow-[0_0_12px_rgba(34,211,238,0.4)]"
+                            <span class="text-cyan-400 font-semibold"
                                 >FIRST Tech Challenge (FTC)</span
                             > teams. It mimics the EasyOpenCV library and FTC SDK
                             structure, letting you test and refine computer vision
@@ -178,10 +170,10 @@
 
                     <div class="flex flex-col gap-4">
                         <div
-                            class="flex items-start gap-5 bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-gray-700/50 backdrop-blur-md hover:border-cyan-500/30 transition-colors"
+                            class="flex items-start gap-5 bg-[#12141a] p-6 rounded-lg border border-gray-800 hover:border-cyan-500/30 transition-colors"
                         >
                             <div
-                                class="p-3 bg-cyan-500/20 text-cyan-400 rounded-xl shadow-inner shadow-cyan-500/20"
+                                class="p-3 bg-cyan-500/20 text-cyan-400 rounded-md shadow-inner shadow-cyan-500/20"
                             >
                                 <Video size={24} />
                             </div>
@@ -196,10 +188,10 @@
                             </div>
                         </div>
                         <div
-                            class="flex items-start gap-5 bg-gradient-to-r from-gray-800/80 to-gray-900/80 p-6 rounded-2xl border border-gray-700/50 backdrop-blur-md hover:border-emerald-500/30 transition-colors"
+                            class="flex items-start gap-5 bg-[#12141a] p-6 rounded-lg border border-gray-800 hover:border-emerald-500/30 transition-colors"
                         >
                             <div
-                                class="p-3 bg-emerald-500/20 text-emerald-400 rounded-xl shadow-inner shadow-emerald-500/20"
+                                class="p-3 bg-emerald-500/20 text-emerald-400 rounded-md shadow-inner shadow-emerald-500/20"
                             >
                                 <Zap size={24} />
                             </div>
@@ -313,7 +305,7 @@
 
                             <!-- Fake computer vision tracking box -->
                             <div
-                                class="absolute w-16 h-16 border-2 border-emerald-500 rounded-md top-1/2 left-1/3 -translate-y-1/2 -translate-x-1/2 group-hover/ui:left-[60%] group-hover/ui:w-20 group-hover/ui:h-20 transition-all duration-1000 ease-in-out shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+                                class="absolute w-16 h-16 border-2 border-emerald-500 rounded-md top-1/2 left-1/3 -translate-y-1/2 -translate-x-1/2 group-hover/ui:left-[60%] group-hover/ui:w-20 group-hover/ui:h-20 transition-all duration-1000 ease-in-out"
                             >
                                 <span
                                     class="absolute -top-4 left-[-2px] text-[8px] bg-emerald-500 text-gray-900 px-1 font-bold rounded-sm shadow-sm backdrop-blur"
@@ -374,7 +366,7 @@
                                         class="h-full bg-purple-500/60 w-[35%] group-hover/tune:w-[75%] transition-all duration-1000 ease-out relative"
                                     >
                                         <div
-                                            class="absolute right-0 top-0 bottom-0 w-1.5 bg-purple-400 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.8)]"
+                                            class="absolute right-0 top-0 bottom-0 w-1.5 bg-purple-400 rounded-full"
                                         ></div>
                                     </div>
                                 </div>
@@ -397,7 +389,7 @@
                                         class="h-full bg-emerald-500/60 w-[60%] group-hover/tune:w-[25%] transition-all duration-1000 ease-out relative"
                                     >
                                         <div
-                                            class="absolute right-0 top-0 bottom-0 w-1.5 bg-emerald-400 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.8)]"
+                                            class="absolute right-0 top-0 bottom-0 w-1.5 bg-emerald-400 rounded-full"
                                         ></div>
                                     </div>
                                 </div>
@@ -464,7 +456,7 @@
                                 class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 transition-transform duration-500 delay-75 backdrop-blur-md relative z-10 ml-8 md:ml-0 md:mt-10"
                             >
                                 <div
-                                    class="hidden md:block absolute left-[-6px] top-[16px] w-2.5 h-2.5 bg-rose-500 rounded-full border border-gray-800 shadow-[0_0_8px_rgba(244,63,94,0.8)] opacity-50 group-hover/pv:opacity-100 transition-opacity"
+                                    class="hidden md:block absolute left-[-6px] top-[16px] w-2.5 h-2.5 bg-rose-500 rounded-full border border-gray-800 opacity-50 group-hover/pv:opacity-100 transition-opacity"
                                 ></div>
                                 <div
                                     class="bg-blue-500/20 text-blue-400 text-[9px] uppercase font-bold tracking-wider px-2 py-1 rounded inline-block mb-3"
@@ -517,29 +509,16 @@
     <!-- Full-Width Download & Platforms Section -->
     <section
         id="download"
-        class="w-full bg-gradient-to-b from-[#05070a] to-[#0a1120] border-t border-gray-800/60 py-32 px-6 relative overflow-hidden"
+        class="download-section w-full bg-[#05070a] border-t border-gray-800/60 px-6 relative overflow-hidden"
     >
-        <div
-            class="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"
-        ></div>
-        <div
-            class="absolute top-0 right-1/4 w-[40rem] h-[40rem] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none"
-        ></div>
-        <div
-            class="absolute bottom-0 left-1/4 w-[30rem] h-[30rem] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"
-        ></div>
 
         <div
             class="container mx-auto max-w-5xl relative z-10 flex flex-col items-center"
         >
             <div class="text-center flex flex-col items-center mb-16">
-                <div
-                    class="p-4 bg-cyan-500/10 text-cyan-500 rounded-2xl shadow-[0_0_15px_rgba(34,211,238,0.2)] mb-8 border border-cyan-500/20"
-                >
-                    <Download size={48} strokeWidth={1.5} />
-                </div>
+                <div class="h-1 w-12 bg-cyan-500 rounded-full mb-8"></div>
                 <h2
-                    class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-gray-400 tracking-tight mb-8"
+                    class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-8"
                 >
                     Get EOCV-Sim
                 </h2>
@@ -555,7 +534,7 @@
                     href="https://docs.deltacv.org/eocv-sim/downloading-eocv-sim"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-3 px-10 py-5 font-bold text-gray-900 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl shadow-[0_0_40px_rgba(34,211,238,0.4)] hover:shadow-[0_0_60px_rgba(34,211,238,0.6)] hover:-translate-y-1 transition-all w-fit text-lg"
+                    class="inline-flex items-center gap-3 px-10 py-5 font-bold text-gray-900 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl hover:-translate-y-1 transition-all w-fit text-lg"
                 >
                     Download Instructions
                     <svg
@@ -577,11 +556,11 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
                 <!-- Windows -->
                 <div
-                    class="bg-gray-900/40 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm shadow-xl flex flex-col group hover:border-blue-500/30 transition-colors"
+                    class="bg-gray-900/40 border border-gray-700/50 rounded-lg p-6 backdrop-blur-sm shadow-xl flex flex-col group hover:border-blue-500/30 transition-colors"
                 >
                     <div class="flex items-center gap-4 mb-4">
                         <div
-                            class="p-3 bg-blue-500/10 text-blue-400 rounded-xl"
+                            class="p-3 bg-blue-500/10 text-blue-400 rounded-lg"
                         >
                             <Monitor size={24} strokeWidth={2} />
                         </div>
@@ -589,7 +568,7 @@
                     </div>
                     <ul class="flex flex-col gap-3 flex-1 justify-center">
                         <li
-                            class="flex items-center justify-between p-3 rounded-lg bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
                         >
                             <span class="text-sm font-medium text-gray-300"
                                 >Intel & AMD (64-bit)</span
@@ -600,7 +579,7 @@
                             >
                         </li>
                         <li
-                            class="flex items-center justify-between p-3 rounded-lg bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
                         >
                             <span class="text-sm font-medium text-gray-300"
                                 >Older PCs (32-bit)</span
@@ -615,11 +594,11 @@
 
                 <!-- macOS -->
                 <div
-                    class="bg-gray-900/40 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm shadow-xl flex flex-col group hover:border-gray-400/30 transition-colors"
+                    class="bg-gray-900/40 border border-gray-700/50 rounded-lg p-6 backdrop-blur-sm shadow-xl flex flex-col group hover:border-gray-400/30 transition-colors"
                 >
                     <div class="flex items-center gap-4 mb-4">
                         <div
-                            class="p-3 bg-gray-500/10 text-gray-300 rounded-xl"
+                            class="p-3 bg-gray-500/10 text-gray-300 rounded-lg"
                         >
                             <Apple size={24} strokeWidth={2} />
                         </div>
@@ -627,7 +606,7 @@
                     </div>
                     <ul class="flex flex-col gap-3 flex-1 justify-center">
                         <li
-                            class="flex items-center justify-between p-3 rounded-lg bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
                         >
                             <span class="text-sm font-medium text-gray-300"
                                 >Intel Macs</span
@@ -638,7 +617,7 @@
                             >
                         </li>
                         <li
-                            class="flex items-center justify-between p-3 rounded-lg bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
                             title="Not officially tested, but known to work"
                         >
                             <span class="text-sm font-medium text-gray-300"
@@ -656,11 +635,11 @@
 
                 <!-- Linux -->
                 <div
-                    class="bg-gray-900/40 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm shadow-xl flex flex-col group hover:border-indigo-500/30 transition-colors"
+                    class="bg-gray-900/40 border border-gray-700/50 rounded-lg p-6 backdrop-blur-sm shadow-xl flex flex-col group hover:border-indigo-500/30 transition-colors"
                 >
                     <div class="flex items-center gap-4 mb-4">
                         <div
-                            class="p-3 bg-indigo-500/10 text-indigo-400 rounded-xl"
+                            class="p-3 bg-indigo-500/10 text-indigo-400 rounded-lg"
                         >
                             <Terminal size={24} strokeWidth={2} />
                         </div>
@@ -668,7 +647,7 @@
                     </div>
                     <ul class="flex flex-col gap-3 flex-1 justify-center">
                         <li
-                            class="flex items-center justify-between p-3 rounded-lg bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
                         >
                             <span class="text-sm font-medium text-gray-300"
                                 >Intel & AMD (64-bit)</span
@@ -679,7 +658,7 @@
                             >
                         </li>
                         <li
-                            class="flex items-center justify-between p-3 rounded-lg bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
                             title="Not officially tested, but known to work"
                         >
                             <span class="text-sm font-medium text-gray-300"
@@ -744,11 +723,14 @@
         bottom: -1.5rem; /* Ajusta esto si quieres más o menos espacio */
     }
 
-    /* ESTILOS ANTERIORES */
-    .glass-card {
-        background: rgba(13, 17, 23, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(55, 65, 81, 0.3);
+    /* Download section: full viewport fill (minus footer height) */
+    .download-section {
+        min-height: calc(100vh - 68px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        box-sizing: border-box;
     }
 </style>

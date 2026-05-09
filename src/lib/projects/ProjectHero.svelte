@@ -66,6 +66,7 @@
         let isSnapping = false;
         let snapTimeout: ReturnType<typeof setTimeout>;
         let animationFrameId: number;
+        let pauseSnapUntil = 0;
 
         function animateScrollTo(targetY: number, duration: number = 400) {
             isSnapping = true;
@@ -103,6 +104,8 @@
         }
 
         const handleWheel = (e: WheelEvent) => {
+            if (Date.now() < pauseSnapUntil) return;
+            
             if (isSnapping) {
                 e.preventDefault();
                 // We DO NOT extend the lock here. 
@@ -129,13 +132,20 @@
             }
         };
 
+        const handlePause = () => {
+            // Pause scroll-snapping for 1.5 seconds when triggered
+            pauseSnapUntil = Date.now() + 1500;
+        };
+
         // Disable scroll-snap on mobile — causes lag on touch devices
         const isMobile = window.matchMedia("(pointer: coarse)").matches;
         if (!isMobile) {
             window.addEventListener("wheel", handleWheel, { passive: false });
+            window.addEventListener("pause-hero-scroll", handlePause);
         }
         return () => {
             window.removeEventListener("wheel", handleWheel);
+            window.removeEventListener("pause-hero-scroll", handlePause);
             clearTimeout(snapTimeout);
             cancelAnimationFrame(animationFrameId);
         };
