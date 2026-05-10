@@ -29,7 +29,7 @@
   <Navbar visible={scrollY > 250} />
 
   <header class="header">
-    <div class="logo">
+    <div class="logo animate-hero-text">
       <AnimatedLogoText massive={true} />
     </div>
   </header>
@@ -113,6 +113,7 @@
     z-index: 10;
     overflow: hidden;
     background-color: #05070a; /* Slightly darker than 0d1117 for depth */
+    animation: hero-bg-in 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     /* Composite mesh background - extremely subtle */
     background-image: radial-gradient(
         circle at 20% 30%,
@@ -159,6 +160,35 @@
     align-items: center;
     width: 100%;
     max-width: 90%;
+  }
+
+  .animate-hero-text {
+    opacity: 0;
+    animation: hero-text-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes hero-bg-in {
+    from {
+      opacity: 0;
+      transform: scale(1.15);
+      filter: blur(20px) brightness(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0) brightness(1);
+    }
+  }
+
+  @keyframes hero-text-in {
+    from {
+      opacity: 0;
+      transform: translateY(120px) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
 
   .content {

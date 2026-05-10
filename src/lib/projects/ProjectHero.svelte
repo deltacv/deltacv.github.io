@@ -135,14 +135,14 @@
 
 <section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#05070a]">
     <!-- Background Video -->
-    <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 z-0 animate-hero-bg">
         <video
             src={videoSrc}
             autoplay
             loop
             muted
             playsinline
-            class="w-full h-full object-{videoFit} opacity-40"
+            class="w-full h-full object-{videoFit}"
         ></video>
         <div class="absolute inset-0 bg-gradient-to-b from-[#05070a]/40 via-transparent to-[#05070a]"></div>
     </div>
@@ -151,13 +151,13 @@
         <div class="flex flex-col items-center gap-12">
             <!-- Left Side: Text -->
             <div class="max-w-4xl text-center">
-                <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6">
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6 animate-hero-title">
                     <span style="background: {titleGradient}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                         {title}
                     </span>
                 </h1>
                 
-                <p class="text-xl md:text-2xl text-gray-300 font-medium mb-8 leading-relaxed">
+                <p class="text-xl md:text-2xl text-gray-300 font-medium mb-8 leading-relaxed animate-hero-text" style="animation-delay: 0.1s;">
                     {introPreText}
                     <span class="inline-block min-w-[120px] text-white border-b-2 border-white/30 pb-1">
                         {currentWord}<span class="cursor-blink">|</span>
@@ -165,7 +165,7 @@
                     {introPostText}
                 </p>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-hero-text" style="animation-delay: 0.2s;">
                     {#if actions}
                         {@render actions()}
                     {/if}
@@ -175,7 +175,8 @@
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer z-10 {scrollIndicatorColorClass}"
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce cursor-pointer z-10 {scrollIndicatorColorClass} animate-hero-text"
+         style="animation-delay: 0.6s;"
          onclick={() => { 
             pauseSnapUntil = Date.now() + 1000;
             window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
@@ -197,5 +198,56 @@
     @keyframes blink {
         0%, 100% { opacity: 1; }
         50% { opacity: 0; }
+    }
+
+    .animate-hero-bg {
+        animation: hero-bg-in 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .animate-hero-text {
+        opacity: 0;
+        animation: hero-text-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .animate-hero-title {
+        opacity: 0;
+        animation: hero-title-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes hero-bg-in {
+        from {
+            opacity: 0;
+            transform: scale(1.4);
+            filter: blur(30px) brightness(0.2);
+        }
+        to {
+            opacity: 0.4;
+            transform: scale(1);
+            filter: blur(0) brightness(1);
+        }
+    }
+
+    @keyframes hero-text-in {
+        from {
+            opacity: 0;
+            transform: translateY(60px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes hero-title-in {
+        from {
+            opacity: 0;
+            transform: translateY(100px) scale(0.85);
+            letter-spacing: 0.1em;
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            letter-spacing: -0.05em;
+        }
     }
 </style>
