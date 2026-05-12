@@ -1,0 +1,3 @@
+[submodule "static/authorities"]
+	path = static/authorities
+	url = https://github.com/deltacv/authorities/
