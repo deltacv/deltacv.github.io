@@ -209,10 +209,24 @@
         }, duration);
     }
 
-    function triggerClickRipple() {
+    function triggerClickRipple(e: MouseEvent) {
         const now = Date.now();
         if (now - lastClickTime < 800) return; // Rate-limit: max 1 click wave per 800ms
         lastClickTime = now;
+
+        updateLayout();
+
+        // Re-evaluate isNear with the fresh layout
+        const buffer = 120;
+        isNear = e.pageY >= layout.rect.top - buffer && e.pageY <= layout.rect.bottom + buffer;
+
+        if (!isNear) return;
+
+        if (layout.rect.width) {
+            rippleX = e.pageX - layout.rect.left;
+            rippleY = e.pageY - layout.rect.top;
+        }
+
         scale.set(0.7);
         scale.set(1);
         spawnRipple(1.0, 2800, 0.2, "click", 1400, 120);
@@ -232,7 +246,12 @@
             const buffer = 120;
             const wasNear = isNear;
             isNear = my >= layout.rect.top - buffer && my <= layout.rect.bottom + buffer;
-            if (isNear && !wasNear) startLoop(); // Resume RAF when mouse enters header
+            if (isNear && !wasNear) {
+                updateLayout();
+                // Re-evaluate with fresh layout
+                isNear = my >= layout.rect.top - buffer && my <= layout.rect.bottom + buffer;
+                startLoop(); // Resume RAF when mouse enters header
+            }
 
             if (lastX === 0 && lastY === 0) { lastX = mx; lastY = my; }
             vx = mx - lastX; vy = my - lastY;
@@ -282,6 +301,8 @@
 
     onMount(() => {
         mounted = true;
+        let animTimer: any;
+
         // Idle-pause: only run RAF loop when there's something to animate
         function loop() {
             if (!isActive) { loopRunning = false; return; }
@@ -317,9 +338,17 @@
             startLoop();
         }, 100);
 
+        // Update layout again once the entry animation is fully complete (1.8s duration)
+        animTimer = setTimeout(() => {
+            if (isActive) {
+                updateLayout();
+            }
+        }, 2000);
+
         return () => {
             clearTimeout(timer);
             clearTimeout(moveTimeout);
+            clearTimeout(animTimer);
             if (frame) cancelAnimationFrame(frame);
             isActive = false;
             loopRunning = false;
