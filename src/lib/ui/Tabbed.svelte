@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { setContext } from "svelte";
+    import { setContext, tick } from "svelte";
     import { ArrowLeft, ArrowRight } from "lucide-svelte";
 
     let { children } = $props();
@@ -30,9 +30,10 @@
     );
 
     let tabsContainer = $state<HTMLElement | null>(null);
-    function scrollToTabs() {
+    async function scrollToTabs() {
+        await tick();
         if (tabsContainer) {
-            tabsContainer.scrollIntoView({ behavior: "smooth" });
+            tabsContainer.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     }
 </script>
@@ -108,6 +109,7 @@
         justify-content: center;
         margin-bottom: 2.5rem;
         border-bottom: 1px solid #21262d;
+        scroll-margin-top: 120px;
     }
 
     .tabs-container button {

@@ -148,25 +148,36 @@ export function searchIndexPlugin(): Plugin {
         configureServer(server) {
             const postsDir = path.join(server.config.root, 'src', 'posts');
 
+            // Build index once on startup
+            let cachedIndex = buildInvertedIndex(postsDir);
+            let cachedLetters = [...cachedIndex.byLetter.keys()].sort();
+
+            // Rebuild index ONLY when a markdown file changes
+            server.watcher.on('all', (event, file) => {
+                if (file.endsWith('.svx')) {
+                    console.log(`[search-index] Rebuilding index due to ${event} on ${path.basename(file)}...`);
+                    cachedIndex = buildInvertedIndex(postsDir);
+                    cachedLetters = [...cachedIndex.byLetter.keys()].sort();
+                }
+            });
+
             server.middlewares.use(
                 '/api/blog/search',
                 (req: IncomingMessage, res: ServerResponse, next: () => void) => {
-                    const { byLetter } = buildInvertedIndex(postsDir);
-                    const letters = [...byLetter.keys()].sort();
                     const url = (req.url ?? '/').split('?')[0].replace(/\/$/, '') || '/';
 
                     res.setHeader('Content-Type', 'application/json');
                     res.setHeader('Cache-Control', 'no-store');
 
                     if (url === '/') {
-                        res.end(JSON.stringify({ letters } satisfies SearchManifest));
+                        res.end(JSON.stringify({ letters: cachedLetters } satisfies SearchManifest));
                         return;
                     }
 
                     // /api/blog/search/k  → single letter
                     const match = url.match(/^\/([a-z0-9])$/);
                     if (match) {
-                        const shard = byLetter.get(match[1]);
+                        const shard = cachedIndex.byLetter.get(match[1]);
                         if (shard) {
                             res.end(JSON.stringify(shard));
                             return;

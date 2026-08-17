@@ -1,22 +1,17 @@
 <script>
-    import { fade } from "svelte/transition";
     import PortfolioProject from "$lib/people/PortfolioProject.svelte";
     import AuthorBlogPosts from "$lib/people/AuthorBlogPosts.svelte";
     import Tabbed from "$lib/ui/Tabbed.svelte";
     import Tab from "$lib/ui/Tab.svelte";
-    import { onMount } from "svelte";
-    import { GraduationCap } from "lucide-svelte";
+    import InfoBadge from "$lib/ui/InfoBadge.svelte";
+    import SocialBadge from "$lib/ui/SocialBadge.svelte";
+    import LocalTimeBadge from "$lib/ui/LocalTimeBadge.svelte";
+    import { GraduationCap, MapPin, Mail } from "lucide-svelte";
     import GithubIcon from "$lib/icons/GithubIcon.svelte";
     import XIcon from "$lib/icons/XIcon.svelte";
     import LinkedinIcon from "$lib/icons/LinkedinIcon.svelte";
 
     import { m } from "$lib/media";
-
-    let mounted = $state(false);
-
-    $effect(() => {
-        mounted = true;
-    });
 </script>
 
 <svelte:head>
@@ -27,25 +22,22 @@
     />
 </svelte:head>
 
-{#if mounted}
-    <main>
+<main>
         <div class="portfolio-container">
             <!-- Hero / Intro Section -->
-            <header class="hero" class:visible={mounted}>
+            <header class="hero">
                 <div class="hero-content">
-                    <h1 class="gradient-text">
-                        Sebastian Erives
-                    </h1>
+                    <div class="hello-nametag">Hi, I am</div>
+                    <h1 class="hero-title">Sebastian Erives</h1>
                     <!-- <p class="subtitle">Software Developer</p> -->
-                    <div
-                        class="education-badge"
-                        title="Universidad Tecmilenio"
-                    >
-                        <GraduationCap size={16} strokeWidth={2.5} />
-                        <span>
-                            Software Engineer • Universidad Tecmilenio
-                            ('24&nbsp;-&nbsp;'28)
-                        </span>
+                    <div class="info-badges-container">
+                        <InfoBadge title="Universidad Tecmilenio" color="#7d9ebf">
+                            <GraduationCap size={18} strokeWidth={2} />
+                            <span>
+                                Software Engineer • Universidad Tecmilenio
+                                ('24&nbsp;-&nbsp;'28)
+                            </span>
+                        </InfoBadge>
                     </div>
                     <p class="bio">
                         Building developer tools, applications and experiences
@@ -53,6 +45,13 @@
                         workflows, to simplify complex systems into visual
                         programming interfaces.
                     </p>
+                    <div class="info-badges-container" style="margin-bottom: 2rem; margin-top: -1rem; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 16px;">
+                        <InfoBadge title="Location">
+                            <MapPin size={18} strokeWidth={2} />
+                            <span>Chihuahua, CHH, Mexico</span>
+                        </InfoBadge>
+                        <LocalTimeBadge timeZone="America/Chihuahua" />
+                    </div>
                     <div
                         class="flex flex-wrap gap-2 justify-center mb-8 max-w-[600px] mx-auto"
                         aria-label="Tech Stack"
@@ -66,40 +65,23 @@
                             </span>
                         {/each}
                     </div>
-                    <div
-                        class="flex items-center gap-5 mt-4 social-links"
-                    >
+                    <div class="flex items-center gap-5 mt-4 social-links">
                         <span
                             class="text-[#8b949e] text-sm font-medium tracking-wide uppercase mr-1"
                             >Connect</span
                         >
-                        <a
-                            href="https://github.com/serivesmejia"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-[#8b949e] hover:text-[#c9d1d9] transition-colors duration-200"
-                            aria-label="GitHub"
-                        >
+                        <SocialBadge href="https://github.com/serivesmejia" ariaLabel="GitHub" handle="serivesmejia">
                             <GithubIcon />
-                        </a>
-                        <a
-                            href="https://x.com/serivesmejia"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-[#8b949e] hover:text-[#c9d1d9] transition-colors duration-200"
-                            aria-label="Twitter / X"
-                        >
+                        </SocialBadge>
+                        <SocialBadge href="https://x.com/serivesmejia" ariaLabel="Twitter / X" handle="@serivesmejia">
                             <XIcon />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/sebastian-erives-mejia-08b032251/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-[#8b949e] hover:text-[#58a6ff] transition-colors duration-200"
-                            aria-label="LinkedIn"
-                        >
+                        </SocialBadge>
+                        <SocialBadge href="https://www.linkedin.com/in/sebastian-erives-mejia-08b032251/" ariaLabel="LinkedIn" handle="Sebastian Erives" colorClass="hover:text-[#58a6ff]">
                             <LinkedinIcon />
-                        </a>
+                        </SocialBadge>
+                        <SocialBadge href="mailto:serivesmejia@deltacv.org" ariaLabel="Email" handle="serivesmejia@deltacv.org" colorClass="hover:text-[#58a6ff]">
+                            <Mail size={22} strokeWidth={2} />
+                        </SocialBadge>
                     </div>
                 </div>
             </header>
@@ -366,7 +348,6 @@
             </Tabbed>
         </div>
     </main>
-{/if}
 
 <style>
     .portfolio-container {
@@ -394,41 +375,47 @@
         align-items: center;
     }
 
-    .gradient-text {
+    .hello-nametag {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        color: #58a6ff;
+        font-family: "Noto Sans", Arial, sans-serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 0;
+    }
+
+    .hello-nametag::before,
+    .hello-nametag::after {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: #58a6ff;
+        opacity: 0.4;
+        border-radius: 2px;
+    }
+
+    .hero-title {
+        font-family: "Noto Sans", Arial, sans-serif;
         font-size: clamp(2.5rem, 5vw, 4.5rem);
-        font-weight: 800;
-        margin: 0 0 0.5rem 0;
-        background: -webkit-linear-gradient(45deg, #58a6ff, #a371f7);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        line-height: 1.1;
+        margin: 0.2rem 0 0.5rem 0;
+        color: #c9d1d9;
         letter-spacing: -1px;
     }
 
-    .education-badge {
-        display: inline-flex;
+    .info-badges-container {
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 12px;
-        background: rgba(88, 166, 255, 0.1);
-        color: #58a6ff;
-        padding: 8px 16px;
-        border-radius: 12px;
-        font-size: 0.9rem;
-        font-weight: 600;
+        gap: 6px;
         margin-bottom: 1.5rem;
-        border: 1px solid rgba(88, 166, 255, 0.2);
-        box-shadow: 0 2px 8px rgba(88, 166, 255, 0.1);
-        text-align: left;
-        max-width: 100%;
-        line-height: 1.4;
-    }
-
-    .education-badge span {
-        text-wrap: balance;
-    }
-
-    .education-badge :global(svg) {
-        flex-shrink: 0;
     }
 
     .bio {
@@ -450,28 +437,35 @@
         }
     }
 
-    .hero .gradient-text,
-    .hero .education-badge,
+    .hero .hello-nametag,
+    .hero .hero-title,
+    .hero .info-badges-container,
     .hero .bio,
     .hero .skill-tag,
     .hero .social-links {
         opacity: 0;
         will-change: transform, opacity;
-    }
-
-    .hero.visible .gradient-text,
-    .hero.visible .education-badge,
-    .hero.visible .bio,
-    .hero.visible .skill-tag,
-    .hero.visible .social-links {
         animation: heroFlyIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
 
-    .hero .gradient-text { animation-delay: 0.1s; }
-    .hero .education-badge { animation-delay: 0.25s; }
-    .hero .bio { animation-delay: 0.4s; }
-    .hero .skill-tag { animation-delay: var(--delay); }
-    .hero .social-links { animation-delay: 0.9s; }
+    .hero .hello-nametag {
+        animation-delay: 0.05s;
+    }
+    .hero .hero-title {
+        animation-delay: 0.15s;
+    }
+    .hero .info-badges-container {
+        animation-delay: 0.25s;
+    }
+    .hero .bio {
+        animation-delay: 0.4s;
+    }
+    .hero .skill-tag {
+        animation-delay: var(--delay);
+    }
+    .hero .social-links {
+        animation-delay: 0.9s;
+    }
 
     /* Projects Section */
     .projects-section {
@@ -512,15 +506,6 @@
             grid-template-columns: repeat(2, 1fr);
         }
 
-        .education-badge {
-            text-align: center;
-            padding: 10px 18px;
-            gap: 14px;
-        }
-
-        .education-badge :global(svg) {
-            transform: scale(1.15);
-        }
     }
 
     @media (max-width: 480px) {

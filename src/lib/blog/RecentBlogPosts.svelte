@@ -12,7 +12,6 @@
     const authorsList = Object.values(authorModules)
         .map((m) => m.author)
         .filter(Boolean);
-    console.log("Found authors for mapping:", authorsList);
 
     function getAuthorName(email) {
         if (!email) return "Anonymous";

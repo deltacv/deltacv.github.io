@@ -11,8 +11,6 @@ const config = {
 		vitePreprocess(),
 		mdsvex({
 			extensions: ['.svx'],
-			remarkPlugins: [remarkSlug // <-- 2. ADD PLUGIN HERE
-			]
 		})
 	],
 	kit: { adapter: adapter() },
