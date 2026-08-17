@@ -6,16 +6,18 @@
     // Dynamically import all author metadata files (relative path avoids glob group issues with (small-header))
     const authorModules = import.meta.glob("./*/author.ts", { eager: true });
 
-    const authors = Object.entries(authorModules).map(([path, mod]: [string, any]) => {
-        // Extract the author folder name (e.g., 'serivesmejia')
-        const folder = path.split("/").slice(-2, -1)[0];
-        
-        return {
-            ...mod.author,
-            href: `/people/${folder}`,
-            imageSrc: mod.author.profilePic || "",
-        };
-    });
+    const authors = Object.entries(authorModules).map(
+        ([path, mod]: [string, any]) => {
+            // Extract the author folder name (e.g., 'serivesmejia')
+            const folder = path.split("/").slice(-2, -1)[0];
+
+            return {
+                ...mod.author,
+                href: `/people/${folder}`,
+                imageSrc: mod.author.profilePic || "",
+            };
+        },
+    );
 
     let mounted = $state(false);
     onMount(() => {
@@ -25,7 +27,10 @@
 
 <svelte:head>
     <title>People - deltacv</title>
-    <meta name="description" content="Meet the open source developers behind deltacv — building computer vision tools, robotics software, and visual programming interfaces." />
+    <meta
+        name="description"
+        content="Meet the open source developers behind deltacv — building computer vision tools, robotics software, and visual programming interfaces."
+    />
 </svelte:head>
 
 {#if mounted}
@@ -33,7 +38,7 @@
         <div class="people-container">
             <!-- Hero / Intro Section -->
             <header class="hero">
-                <h1 class="gradient-text">People @ deltacv</h1>
+                <h1 class="gradient-text">people @ deltacv</h1>
                 <p class="subtitle">
                     Meet the open source developers behind the tools.
                 </p>

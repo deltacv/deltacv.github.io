@@ -18,7 +18,9 @@
         Apple,
         Terminal,
         Monitor,
+        ArrowRight,
     } from "lucide-svelte";
+    import NodeConnection from "$lib/icons/NodeConnection.svelte";
     import { m } from "$lib/media";
     import MediaElement from "$lib/ui/MediaElement.svelte";
 
@@ -107,7 +109,7 @@
                     onclick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        window.dispatchEvent(new Event('pause-hero-scroll'));
+                        window.dispatchEvent(new Event("pause-hero-scroll"));
                         document.getElementById("download")?.scrollIntoView({
                             behavior: "smooth",
                             block: "center",
@@ -152,7 +154,7 @@
                 >
                     <div>
                         <h2
-                            class="text-3xl md:text-5xl font-extrabold text-white tracking-tight"
+                            class="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-[2.75rem] font-extrabold text-white tracking-tight whitespace-nowrap"
                         >
                             What is EOCV-Sim?
                         </h2>
@@ -168,43 +170,44 @@
                         </p>
                     </div>
 
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-12 mt-2">
                         <div
-                            class="flex items-start gap-5 bg-[#12141a] p-6 rounded-lg border border-gray-800 hover:border-cyan-500/30 transition-colors"
+                            class="pl-6 py-4 border-l-2 border-[#30363d] hover:border-cyan-500/60 transition-colors duration-300"
                         >
-                            <div
-                                class="p-3 bg-cyan-500/20 text-cyan-400 rounded-md shadow-inner shadow-cyan-500/20"
+                            <h4
+                                class="text-xl text-white font-semibold tracking-tight mb-3 flex items-center gap-3"
                             >
-                                <Video size={24} />
-                            </div>
-                            <div>
-                                <h4 class="text-lg text-white font-medium mb-1">
-                                    Zero Hardware Required
-                                </h4>
-                                <p class="text-gray-400 leading-snug">
-                                    Test with webcams, static images, or
-                                    pre-recorded videos—no robot needed.
-                                </p>
-                            </div>
+                                <Video
+                                    size={22}
+                                    strokeWidth={2}
+                                    color="currentColor"
+                                    class="text-cyan-500/80"
+                                />
+                                Zero Hardware Required
+                            </h4>
+                            <p class="text-[#8b949e] leading-relaxed">
+                                Test with webcams, static images, or
+                                pre-recorded videos—no robot needed.
+                            </p>
                         </div>
                         <div
-                            class="flex items-start gap-5 bg-[#12141a] p-6 rounded-lg border border-gray-800 hover:border-emerald-500/30 transition-colors"
+                            class="pl-6 py-4 border-l-2 border-[#30363d] hover:border-emerald-500/60 transition-colors duration-300"
                         >
-                            <div
-                                class="p-3 bg-emerald-500/20 text-emerald-400 rounded-md shadow-inner shadow-emerald-500/20"
+                            <h4
+                                class="text-xl text-white font-semibold tracking-tight mb-3 flex items-center gap-3"
                             >
-                                <Zap size={24} />
-                            </div>
-                            <div>
-                                <h4 class="text-lg text-white font-medium mb-1">
-                                    Instant Feedback
-                                </h4>
-                                <p class="text-gray-400 leading-snug">
-                                    Stop wasting time on the slow
-                                    build-and-deploy cycle. Test instantly,
-                                    deploy once.
-                                </p>
-                            </div>
+                                <Zap
+                                    size={22}
+                                    strokeWidth={2}
+                                    color="currentColor"
+                                    class="text-emerald-500/80"
+                                />
+                                Instant Feedback
+                            </h4>
+                            <p class="text-[#8b949e] leading-relaxed">
+                                Stop wasting time on the slow build-and-deploy
+                                cycle. Test instantly, deploy once.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -414,18 +417,7 @@
                         ></div>
 
                         <!-- Connection Wire (SVG) -->
-                        <svg
-                            class="absolute inset-0 w-full h-full z-0 pointer-events-none"
-                        >
-                            <path
-                                d="M 180 50 C 220 50, 220 90, 260 90"
-                                fill="none"
-                                stroke="#f43f5e"
-                                stroke-width="2.5"
-                                stroke-dasharray="4"
-                                class="opacity-40 group-hover/pv:opacity-100 transition-opacity duration-500 hidden md:block"
-                            />
-                        </svg>
+                        <NodeConnection stroke="#f43f5e" />
 
                         <!-- Mock Nodes Canvas container -->
                         <div
@@ -511,7 +503,6 @@
         id="download"
         class="download-section w-full bg-[#05070a] border-t border-gray-800/60 px-6 relative overflow-hidden"
     >
-
         <div
             class="container mx-auto max-w-5xl relative z-10 flex flex-col items-center"
         >
@@ -537,18 +528,7 @@
                     class="inline-flex items-center gap-3 px-10 py-5 font-bold text-gray-900 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl hover:-translate-y-1 transition-all w-fit text-lg"
                 >
                     Download Instructions
-                    <svg
-                        class="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2.5"
-                        ><path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        /></svg
-                    >
+                    <ArrowRight class="w-6 h-6" strokeWidth={2.5} />
                 </a>
             </div>
 
@@ -556,123 +536,151 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
                 <!-- Windows -->
                 <div
-                    class="bg-gray-900/40 border border-gray-700/50 rounded-lg p-6 backdrop-blur-sm shadow-xl flex flex-col group hover:border-blue-500/30 transition-colors"
+                    class="bg-[#0d1117] border border-[#30363d] rounded-lg p-8 flex flex-col transition-colors hover:border-[#8b949e]/50"
                 >
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="p-3 bg-blue-500/10 text-blue-400 rounded-lg"
+                    <div class="flex items-center gap-3 mb-6">
+                        <Monitor size={22} strokeWidth={2} class="text-white" />
+                        <h3
+                            class="text-xl font-semibold text-white tracking-tight"
                         >
-                            <Monitor size={24} strokeWidth={2} />
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Windows</h3>
+                            Windows
+                        </h3>
                     </div>
-                    <ul class="flex flex-col gap-3 flex-1 justify-center">
+                    <ul class="flex flex-col flex-1 justify-center">
                         <li
-                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between py-3 border-b border-[#30363d] last:border-0"
                         >
-                            <span class="text-sm font-medium text-gray-300"
+                            <span class="text-sm font-medium text-[#8b949e]"
                                 >Intel & AMD (64-bit)</span
                             >
-                            <span
-                                class="text-[10px] font-bold tracking-wider px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/20"
-                                >TESTED</span
-                            >
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-2 h-2 rounded-full bg-[#2ea043]"
+                                ></div>
+                                <span class="text-sm text-[#8b949e]"
+                                    >Tested</span
+                                >
+                            </div>
                         </li>
                         <li
-                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between py-3 border-b border-[#30363d] last:border-0"
                         >
-                            <span class="text-sm font-medium text-gray-300"
+                            <span class="text-sm font-medium text-[#8b949e]"
                                 >Older PCs (32-bit)</span
                             >
-                            <span
-                                class="text-[10px] font-bold tracking-wider px-2 py-1 rounded bg-amber-500/20 text-amber-400 border border-amber-500/20"
-                                >UNTESTED</span
-                            >
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-2 h-2 rounded-full bg-[#d29922]"
+                                ></div>
+                                <span class="text-sm text-[#8b949e]"
+                                    >Untested</span
+                                >
+                            </div>
                         </li>
                     </ul>
                 </div>
 
                 <!-- macOS -->
                 <div
-                    class="bg-gray-900/40 border border-gray-700/50 rounded-lg p-6 backdrop-blur-sm shadow-xl flex flex-col group hover:border-gray-400/30 transition-colors"
+                    class="bg-[#0d1117] border border-[#30363d] rounded-lg p-8 flex flex-col transition-colors hover:border-[#8b949e]/50"
                 >
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="p-3 bg-gray-500/10 text-gray-300 rounded-lg"
+                    <div class="flex items-center gap-3 mb-6">
+                        <Apple size={22} strokeWidth={2} class="text-white" />
+                        <h3
+                            class="text-xl font-semibold text-white tracking-tight"
                         >
-                            <Apple size={24} strokeWidth={2} />
-                        </div>
-                        <h3 class="text-xl font-bold text-white">macOS</h3>
+                            macOS
+                        </h3>
                     </div>
-                    <ul class="flex flex-col gap-3 flex-1 justify-center">
+                    <ul class="flex flex-col flex-1 justify-center">
                         <li
-                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between py-3 border-b border-[#30363d] last:border-0"
                         >
-                            <span class="text-sm font-medium text-gray-300"
+                            <span class="text-sm font-medium text-[#8b949e]"
                                 >Intel Macs</span
                             >
-                            <span
-                                class="text-[10px] font-bold tracking-wider px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/20"
-                                >TESTED</span
-                            >
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-2 h-2 rounded-full bg-[#2ea043]"
+                                ></div>
+                                <span class="text-sm text-[#8b949e]"
+                                    >Tested</span
+                                >
+                            </div>
                         </li>
                         <li
-                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between py-3 border-b border-[#30363d] last:border-0"
                             title="Not officially tested, but known to work"
                         >
-                            <span class="text-sm font-medium text-gray-300"
+                            <span class="text-sm font-medium text-[#8b949e]"
                                 >Apple Silicon <span class="whitespace-nowrap"
                                     >(M-Series)</span
                                 ></span
                             >
-                            <span
-                                class="text-[10px] font-bold tracking-wider px-2 py-1 rounded bg-blue-500/20 text-blue-400 border border-blue-500/20 cursor-help"
-                                >UNOFFICIAL*</span
-                            >
+                            <div class="flex items-center gap-2 cursor-help">
+                                <div
+                                    class="w-2 h-2 rounded-full bg-[#388bfd]"
+                                ></div>
+                                <span class="text-sm text-[#8b949e]"
+                                    >Unofficial*</span
+                                >
+                            </div>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Linux -->
                 <div
-                    class="bg-gray-900/40 border border-gray-700/50 rounded-lg p-6 backdrop-blur-sm shadow-xl flex flex-col group hover:border-indigo-500/30 transition-colors"
+                    class="bg-[#0d1117] border border-[#30363d] rounded-lg p-8 flex flex-col transition-colors hover:border-[#8b949e]/50"
                 >
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="p-3 bg-indigo-500/10 text-indigo-400 rounded-lg"
+                    <div class="flex items-center gap-3 mb-6">
+                        <Terminal
+                            size={22}
+                            strokeWidth={2}
+                            class="text-white"
+                        />
+                        <h3
+                            class="text-xl font-semibold text-white tracking-tight"
                         >
-                            <Terminal size={24} strokeWidth={2} />
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Linux</h3>
+                            Linux
+                        </h3>
                     </div>
-                    <ul class="flex flex-col gap-3 flex-1 justify-center">
+                    <ul class="flex flex-col flex-1 justify-center">
                         <li
-                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between py-3 border-b border-[#30363d] last:border-0"
                         >
-                            <span class="text-sm font-medium text-gray-300"
+                            <span class="text-sm font-medium text-[#8b949e]"
                                 >Intel & AMD (64-bit)</span
                             >
-                            <span
-                                class="text-[10px] font-bold tracking-wider px-2 py-1 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/20"
-                                >TESTED</span
-                            >
+                            <div class="flex items-center gap-2">
+                                <div
+                                    class="w-2 h-2 rounded-full bg-[#2ea043]"
+                                ></div>
+                                <span class="text-sm text-[#8b949e]"
+                                    >Tested</span
+                                >
+                            </div>
                         </li>
                         <li
-                            class="flex items-center justify-between p-3 rounded-md bg-gray-800/50 border border-gray-700/50"
+                            class="flex items-center justify-between py-3 border-b border-[#30363d] last:border-0"
                             title="Not officially tested, but known to work"
                         >
-                            <span class="text-sm font-medium text-gray-300"
-                                >Raspberry Pi & ARM</span
+                            <span class="text-sm font-medium text-[#8b949e]"
+                                >ARM64 (RPI)</span
                             >
-                            <span
-                                class="text-[10px] font-bold tracking-wider px-2 py-1 rounded bg-blue-500/20 text-blue-400 border border-blue-500/20 cursor-help"
-                                >UNOFFICIAL*</span
-                            >
+                            <div class="flex items-center gap-2 cursor-help">
+                                <div
+                                    class="w-2 h-2 rounded-full bg-[#388bfd]"
+                                ></div>
+                                <span class="text-sm text-[#8b949e]"
+                                    >Unofficial*</span
+                                >
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <p class="mt-6 text-sm text-gray-500 max-w-2xl text-center">
+            <p class="mt-6 text-sm text-[#8b949e] max-w-2xl text-center">
                 *Both Apple Silicon (macOS) and Linux ARM (Raspberry Pi) are not
                 actively tested when new features are developed; however, they
                 are known to work correctly.

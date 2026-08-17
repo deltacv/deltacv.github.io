@@ -20,7 +20,11 @@
         Video,
         MonitorPlay,
         Download,
+        Camera,
+        Image as ImageIcon,
+        ArrowRight
     } from "lucide-svelte";
+    import NodeConnection from "$lib/icons/NodeConnection.svelte";
 
     // 4. OPCIONES DEL CARRUSEL
     const splideOptions = {
@@ -170,44 +174,44 @@
                         </p>
                     </div>
 
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-12 mt-2">
                         <div
-                            class="flex items-start gap-5 bg-[#12141a] p-6 rounded-lg border border-gray-800 hover:border-amber-500/30 transition-colors"
+                            class="pl-6 py-4 border-l-2 border-[#30363d] hover:border-amber-500/60 transition-colors duration-300"
                         >
-                            <div
-                                class="p-3 bg-amber-500/20 text-amber-400 rounded-md shadow-inner shadow-amber-500/20"
+                            <h4
+                                class="text-xl text-white font-semibold tracking-tight mb-3 flex items-center gap-3"
                             >
-                                <Zap size={24} />
-                            </div>
-                            <div>
-                                <h4 class="text-lg text-white font-medium mb-1">
-                                    Visual First Approach
-                                </h4>
-                                <p class="text-gray-400 leading-snug">
-                                    Connect nodes, tweak parameters natively,
-                                    and understand your pipeline's flow at a
-                                    glance.
-                                </p>
-                            </div>
+                                <Zap
+                                    size={22}
+                                    strokeWidth={2}
+                                    color="currentColor"
+                                    class="text-amber-500/80"
+                                />
+                                Visual First Approach
+                            </h4>
+                            <p class="text-[#8b949e] leading-relaxed">
+                                Connect nodes, tweak parameters natively, and
+                                understand your pipeline's flow at a glance.
+                            </p>
                         </div>
                         <div
-                            class="flex items-start gap-5 bg-[#12141a] p-6 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition-colors"
+                            class="pl-6 py-4 border-l-2 border-[#30363d] hover:border-blue-500/60 transition-colors duration-300"
                         >
-                            <div
-                                class="p-3 bg-blue-500/20 text-blue-400 rounded-xl shadow-inner shadow-blue-500/20"
+                            <h4
+                                class="text-xl text-white font-semibold tracking-tight mb-3 flex items-center gap-3"
                             >
-                                <Code2 size={24} />
-                            </div>
-                            <div>
-                                <h4 class="text-lg text-white font-medium mb-1">
-                                    Production Ready Export
-                                </h4>
-                                <p class="text-gray-400 leading-snug">
-                                    When you're happy with the vision prototype,
-                                    generate native Java & Python code
-                                    instantly.
-                                </p>
-                            </div>
+                                <Code2
+                                    size={22}
+                                    strokeWidth={2}
+                                    color="currentColor"
+                                    class="text-blue-500/80"
+                                />
+                                Production Ready Export
+                            </h4>
+                            <p class="text-[#8b949e] leading-relaxed">
+                                When you're happy with the vision prototype,
+                                generate native Java & Python code instantly.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -328,18 +332,7 @@
                         <div
                             class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:16px_16px]"
                         ></div>
-                        <svg
-                            class="absolute inset-0 w-full h-full z-0 pointer-events-none"
-                        >
-                            <path
-                                d="M 180 50 C 220 50, 220 90, 260 90"
-                                fill="none"
-                                stroke="#f59e0b"
-                                stroke-width="2.5"
-                                stroke-dasharray="4"
-                                class="opacity-40 group-hover/pv:opacity-100 transition-opacity duration-500 hidden md:block"
-                            />
-                        </svg>
+                        <NodeConnection />
                         <div
                             class="absolute inset-0 p-5 flex flex-col md:flex-row gap-6 md:gap-20 items-start z-10 w-full"
                         >
@@ -475,7 +468,7 @@
                 <Feature
                     icon={Code2}
                     title="One-Click Code Generation"
-                    desc="Generates clean, corresponding Java & Python pipeline code for your project."
+                    desc={"Generates clean, corresponding Java & Python pipeline code for your project.\n\nInstantly transition from a visual prototype to production-ready code with zero manual transcription or translation errors."}
                     color="emerald"
                     class="md:col-span-2 lg:col-span-2 flex flex-col group/cg md:[&>div>p]:max-w-[45%] md:[&>div>h3]:max-w-[45%]"
                 >
@@ -553,57 +546,19 @@
                         <div
                             class="flex items-center gap-2 bg-blue-950/40 border border-blue-500/30 px-3 py-1.5 rounded-md text-blue-400 text-[9px] font-mono shadow-inner group-hover/ui:-translate-y-1 transition-transform duration-300"
                         >
-                            <svg
-                                class="w-3 h-3 flex-shrink-0"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                ><path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-                                /><path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-                                /></svg
-                            >
+                            <Camera size={12} class="flex-shrink-0" />
                             <span class="truncate">LIVE_WEBCAM</span>
                         </div>
                         <div
                             class="flex items-center gap-2 bg-purple-950/40 border border-purple-500/30 px-3 py-1.5 rounded-md text-purple-400 text-[9px] font-mono shadow-inner group-hover/ui:-translate-y-1 transition-transform duration-300 delay-75"
                         >
-                            <svg
-                                class="w-3 h-3 flex-shrink-0"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                ><path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-                                /></svg
-                            >
+                            <Video size={12} class="flex-shrink-0" />
                             <span class="truncate">VIDEO_TEST.MP4</span>
                         </div>
                         <div
                             class="flex items-center gap-2 bg-emerald-950/40 border border-emerald-500/30 px-3 py-1.5 rounded-md text-emerald-400 text-[9px] font-mono shadow-inner group-hover/ui:-translate-y-1 transition-transform duration-300 delay-150"
                         >
-                            <svg
-                                class="w-3 h-3 flex-shrink-0"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                ><path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                /></svg
-                            >
+                            <ImageIcon size={12} class="flex-shrink-0" />
                             <span class="truncate">IMAGE_01.JPG</span>
                         </div>
                     </div>
@@ -642,18 +597,7 @@
                 class="inline-flex items-center gap-3 px-10 py-5 font-bold text-gray-900 bg-gradient-to-r from-amber-400 to-amber-500 rounded-2xl hover:-translate-y-1 transition-all w-fit text-lg"
             >
                 Download Instructions
-                <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    ><path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    /></svg
-                >
+                <ArrowRight size={24} strokeWidth={2.5} />
             </a>
         </div>
     </section>

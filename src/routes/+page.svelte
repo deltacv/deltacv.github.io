@@ -10,7 +10,7 @@
   import RecentBlogPosts from "$lib/blog/RecentBlogPosts.svelte";
 
   import Footer from "$lib/footer/Footer.svelte";
-  import { User } from "lucide-svelte";
+  import { Users } from "lucide-svelte";
 
   let scrollY = 0;
 </script>
@@ -59,17 +59,17 @@
         href="/eocv-sim"
       />
 
-      <!-- Meet the Developer Card -->
-      <a href="/people/serivesmejia" class="developer-card">
+      <!-- Meet the Developers Card -->
+      <a href="/people" class="developer-card">
         <div class="dev-icon">
-          <User size={48} strokeWidth={1.5} color="#58a6ff" />
+          <Users size={48} strokeWidth={1.5} color="#58a6ff" />
         </div>
-        <h2>Meet the Developer</h2>
+        <h2>Meet the Developers</h2>
         <p>
-          Hi, I'm Sebastian! See my freelancing portfolio, technical writing,
-          and background.
+          Meet the open source developers behind deltacv, making the magic
+          behind the scenes.
         </p>
-        <span class="read-more">View Profile &rarr;</span>
+        <span class="read-more">View Profiles &rarr;</span>
       </a>
     </div>
 
@@ -125,8 +125,8 @@
         rgba(139, 148, 158, 0.015),
         transparent 30%
       ),
-      linear-gradient(rgba(48, 54, 61, 0.50) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(48, 54, 61, 0.50) 1px, transparent 1px);
+      linear-gradient(rgba(48, 54, 61, 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(48, 54, 61, 0.5) 1px, transparent 1px);
     background-size:
       100% 100%,
       100% 100%,
