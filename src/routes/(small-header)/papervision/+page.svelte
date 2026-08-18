@@ -22,7 +22,7 @@
         Download,
         Camera,
         Image as ImageIcon,
-        ArrowRight
+        ArrowRight,
     } from "lucide-svelte";
     import NodeConnection from "$lib/icons/NodeConnection.svelte";
 
@@ -85,11 +85,60 @@
 </script>
 
 <svelte:head>
-    <title>PaperVision - deltacv</title>
+    <title>PaperVision - OpenCV Node Editor | deltacv</title>
     <meta
         name="description"
         content="PaperVision is a node-based visual editor for OpenCV pipelines. Prototype, tune, and export complex computer vision algorithms without writing a single line of code."
     />
+    <meta
+        name="keywords"
+        content="OpenCV node editor, Visual Pipeline Editor, OpenCV, Computer Vision, Node Editor, Visual Programming, Code Generation, Java, Python"
+    />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://deltacv.org/papervision" />
+    <meta property="og:title" content="PaperVision - OpenCV Node Editor" />
+    <meta
+        property="og:description"
+        content="Prototype, tune, and export complex computer vision algorithms without writing a single line of code."
+    />
+    <meta property="og:image" content={m("/papervision-hero.mp4")} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://deltacv.org/papervision" />
+    <meta property="twitter:title" content="PaperVision - OpenCV Node Editor" />
+    <meta
+        property="twitter:description"
+        content="Prototype, tune, and export complex computer vision algorithms without writing a single line of code."
+    />
+    <meta property="twitter:image" content={m("/papervision.png")} />
+
+    <link rel="canonical" href="https://deltacv.org/papervision" />
+
+    <!-- Structured Data -->
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+    {@html `<script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "PaperVision",
+            "operatingSystem": "Windows, macOS, Linux",
+            "applicationCategory": "DeveloperApplication",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "description": "PaperVision is a node-based visual editor for OpenCV pipelines. Prototype, tune, and export complex computer vision algorithms.",
+            "author": {
+                "@type": "Organization",
+                "name": "deltacv",
+                "url": "https://deltacv.org"
+            }
+        }
+    </script>`}
 </svelte:head>
 
 <div class="project-page-wrapper">
@@ -99,7 +148,7 @@
         videoSrc={m("/papervision-hero.mp4")}
         typingWords={["create", "prototype", "tune", "export"]}
         introPreText="Visually"
-        introPostText="your computer vision algorithms."
+        introPostText="your OpenCV pipelines."
         scrollIndicatorColorClass="text-amber-400"
         videoFit="contain"
     >
@@ -161,14 +210,13 @@
                         <p
                             class="mt-6 text-lg md:text-xl text-gray-300 leading-relaxed"
                         >
-                            PaperVision is a node-based pipeline editor built
-                            for
+                            PaperVision is a visual OpenCV node editor built for
                             <span class="text-amber-400 font-semibold"
                                 >beginners and experts alike</span
                             >. It bridges the gap between conceptual design and
                             executed algorithms, letting you prototype complex
-                            computer vision logic without writing endless lines
-                            of boilerplate code.
+                            OpenCV pipelines without writing endless lines of
+                            boilerplate code.
                         </p>
                     </div>
 
