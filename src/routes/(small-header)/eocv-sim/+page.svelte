@@ -125,8 +125,6 @@
                 <div class="flex flex-col sm:flex-row gap-4 w-full">
                     <a
                         href="https://docs.deltacv.org/eocv-sim/"
-                        target="_blank"
-                        rel="noopener noreferrer"
                         class="flex-1 px-8 py-3.5 font-semibold text-white bg-gray-800/80 backdrop-blur border border-gray-700/80 rounded-xl hover:bg-gray-700/80 hover:border-gray-500/50 transition-all transform hover:-translate-y-1 text-center shadow-lg whitespace-nowrap"
                     >
                         Read the Docs
@@ -523,8 +521,6 @@
 
                 <a
                     href="https://docs.deltacv.org/eocv-sim/downloading-eocv-sim"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     class="inline-flex items-center gap-3 px-10 py-5 font-bold text-gray-900 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl hover:-translate-y-1 transition-all w-fit text-lg"
                 >
                     Download Instructions

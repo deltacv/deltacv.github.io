@@ -94,7 +94,7 @@
         >
 
         <div class="nav-dropdown" class:is-open={activeDropdown === 'projects'}>
-          <button class="nav-button" on:click={(e) => toggleDropdown('projects', e)}>Projects ▾</button>
+          <button class="nav-button" class:active={$page.url.pathname === "/eocv-sim" || $page.url.pathname === "/papervision"} on:click={(e) => toggleDropdown('projects', e)}>Projects ▾</button>
           <div class="dropdown-content">
             <a
               href="/eocv-sim"
@@ -117,7 +117,7 @@
         </div>
 
         <div class="nav-dropdown" class:is-open={activeDropdown === 'about'}>
-          <button class="nav-button" on:click={(e) => toggleDropdown('about', e)}>About ▾</button>
+          <button class="nav-button" class:active={$page.url.pathname.startsWith("/blog") || $page.url.pathname.startsWith("/people")} on:click={(e) => toggleDropdown('about', e)}>About ▾</button>
           <div class="dropdown-content">
             <a
               href="/blog"
@@ -161,7 +161,7 @@
       </a>
 
       <details class="mobile-dropdown">
-        <summary class="mobile-dropdown-summary">Projects</summary>
+        <summary class="mobile-dropdown-summary" class:active={$page.url.pathname === "/eocv-sim" || $page.url.pathname === "/papervision"}>Projects</summary>
 
         <div class="mobile-dropdown-items">
           <a
@@ -185,7 +185,7 @@
       </details>
 
       <details class="mobile-dropdown">
-        <summary class="mobile-dropdown-summary">About</summary>
+        <summary class="mobile-dropdown-summary" class:active={$page.url.pathname.startsWith("/blog") || $page.url.pathname.startsWith("/people")}>About</summary>
 
         <div class="mobile-dropdown-items">
           <a
@@ -504,7 +504,8 @@
   }
 
   .mobile-link.active,
-  .mobile-dropdown-link.active {
+  .mobile-dropdown-link.active,
+  .mobile-dropdown-summary.active {
     background-color: #21262d;
     color: #ffffff;
   }

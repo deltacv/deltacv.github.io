@@ -47,22 +47,19 @@
                             ('24&nbsp;-&nbsp;'28)
                         </span>
                     </InfoBadge>
+                    <div class="flex flex-row flex-wrap justify-center gap-3.5 mt-1">
+                        <InfoBadge title="Location">
+                            <MapPin size={18} strokeWidth={2} />
+                            <span>Chihuahua, CHH, Mexico</span>
+                        </InfoBadge>
+                        <LocalTimeBadge timeZone="America/Chihuahua" />
+                    </div>
                 </div>
                 <p class="bio">
                     Building developer tools, applications and experiences with
                     Java and Kotlin, including computer vision workflows, to
                     simplify complex systems into visual programming interfaces.
                 </p>
-                <div
-                    class="info-badges-container"
-                    style="margin-bottom: 2rem; margin-top: -1rem; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 16px;"
-                >
-                    <InfoBadge title="Location">
-                        <MapPin size={18} strokeWidth={2} />
-                        <span>Chihuahua, CHH, Mexico</span>
-                    </InfoBadge>
-                    <LocalTimeBadge timeZone="America/Chihuahua" />
-                </div>
                 <div
                     class="flex flex-wrap gap-2 justify-center mb-8 max-w-[600px] mx-auto"
                     aria-label="Tech Stack"
@@ -365,16 +362,21 @@
                                 <TimelineItem
                                     title="Software Intern"
                                     subtitle="AutoZone BTSSC"
-                                    date="Jul 2026 - Present"
+                                    startDate="2026-07"
+                                    endDate="Present"
                                     icon={Briefcase}
                                     iconColor="#58a6ff"
                                 >
                                     <ul class="list-none space-y-1.5 mt-1">
                                         <li>
-                                            • Leveraging Power Automate to streamline and provide improvements to internal business processes.
+                                            • Leveraging Power Automate to
+                                            streamline and provide improvements
+                                            to internal business processes.
                                         </li>
                                         <li>
-                                            • Collaborating extensively across teams using Jira and rapid agile methodologies to deliver solutions.
+                                            • Collaborating extensively across
+                                            teams using Jira and rapid agile
+                                            methodologies to deliver solutions.
                                         </li>
                                     </ul>
                                 </TimelineItem>
@@ -392,7 +394,8 @@
                                 <TimelineItem
                                     title="Software Engineering Degree"
                                     subtitle="Universidad Tecmilenio"
-                                    date="2024 - 2028"
+                                    startDate="2024"
+                                    endDate="2028"
                                     icon={GraduationCap}
                                     iconColor="#3fb950"
                                 >
@@ -406,9 +409,10 @@
 
                                 <TimelineItem
                                     title="Robotics Team Mentor"
-                                    subtitle="FIRST Tech Challenge & FIRST Robotics Competition"
-                                    date="2024 - Present"
-                                    icon={Bot}
+                                    subtitle="Tecmilenio - FIRST Tech Challenge"
+                                    startDate="2024"
+                                    endDate="Present"
+                                    icon={Users}
                                     iconColor="#d29922"
                                 >
                                     <p class="mt-1">
@@ -421,16 +425,19 @@
 
                                 <TimelineItem
                                     title="Robotics Team Student"
-                                    subtitle="FIRST Tech Challenge"
-                                    date="2018 - 2024"
+                                    subtitle="FIRST Tech Challenge & FIRST Robotics Competition"
+                                    startDate="2018"
+                                    endDate="2024"
                                     icon={Bot}
                                     iconColor="#8b949e"
                                 >
                                     <p class="mt-1">
-                                        Competed in the FIRST Tech Challenge,
-                                        developing foundational skills in Java &
-                                        Kotlin programming, computer vision, and
-                                        collaborative software engineering.
+                                        Competed in FIRST Robotics in various
+                                        teams, developing foundational skills in
+                                        mechanics, CAD, Java & Kotlin
+                                        programming with applied control theory,
+                                        computer vision, and collaborative
+                                        software engineering.
                                     </p>
                                 </TimelineItem>
                             </Timeline>
@@ -573,7 +580,7 @@
         font-size: 2rem;
         font-weight: 700;
         margin: 0 0 2rem 0;
-        color: #ffffff;
+        color: #b1bac4;
         text-transform: uppercase;
         letter-spacing: 1px;
     }

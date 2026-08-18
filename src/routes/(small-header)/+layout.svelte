@@ -1,10 +1,21 @@
 <script>
   import Footer from "$lib/footer/Footer.svelte";
   import Navbar from "$lib/header/Navbar.svelte";
+  import { page } from "$app/stores";
+
+  let scrollY = $state(0);
+  let innerHeight = $state(1000);
+
+  // Check if the current page has declared a hero section in its load function
+  let hasHero = $derived($page.data.hasHero === true);
+  // Show after scrolling 85% of the viewport height if there's a hero, else always show
+  let navbarVisible = $derived(hasHero ? scrollY > innerHeight * 0.85 : true);
 </script>
 
+<svelte:window bind:scrollY bind:innerHeight />
+
 <div class="container">
-  <Navbar visible={true} />
+  <Navbar visible={navbarVisible} />
 
   <main class="content">
     <slot />
