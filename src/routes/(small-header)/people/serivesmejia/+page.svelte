@@ -45,7 +45,7 @@
                         <div class="marquee-wrapper">
                             <div class="marquee-content">
                                 <span>Software Engineer • Universidad Tecmilenio ('24&nbsp;-&nbsp;'28)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <span aria-hidden="true">Software Engineer • Universidad Tecmilenio ('24&nbsp;-&nbsp;'28)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <span class="marquee-duplicate" aria-hidden="true">Software Engineer • Universidad Tecmilenio ('24&nbsp;-&nbsp;'28)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             </div>
                         </div>
                     </InfoBadge>
@@ -590,8 +590,9 @@
     /* CSS Grid */
     .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        justify-items: center;
     }
 
     .marquee-wrapper {
@@ -604,18 +605,27 @@
         white-space: nowrap;
     }
 
+    .marquee-duplicate {
+        display: none;
+    }
+
     .marquee-content span {
         white-space: nowrap !important;
         text-wrap: nowrap !important;
-        padding-left: 20px; /* Ensures the 'S' is clear of the left edge fade mask on load */
     }
 
     @media (max-width: 600px) {
+        .marquee-content span {
+            padding-left: 20px; /* Ensures the 'S' is clear of the left edge fade mask on load */
+        }
         .marquee-wrapper {
             max-width: 65vw;
             overflow: hidden;
             -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
             mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        }
+        .marquee-duplicate {
+            display: inline-block;
         }
         .marquee-content {
             animation: marquee-loop 14s linear infinite;

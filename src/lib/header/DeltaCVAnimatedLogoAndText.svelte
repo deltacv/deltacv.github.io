@@ -395,6 +395,8 @@
     .wrapper {
         display: flex;
         align-items: center;
+        justify-content: center;
+        width: 100%;
         gap: 0.75rem;
         font-size: clamp(1.25rem, 2.5vw, 2.25rem);
         position: relative;

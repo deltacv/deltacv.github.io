@@ -96,7 +96,7 @@
         display: flex;
         flex-direction: row;
         width: 100%;
-        max-width: 850px;
+        max-width: 100%;
         margin: 0 auto;
         background-color: #161b22;
         border: 1px solid #30363d;
@@ -238,11 +238,12 @@
         .content-container {
             border-left: none;
             border-top: 1px solid #21262d;
-            padding: 2rem;
+            padding: 1.5rem 1.75rem;
         }
         .image-container {
             width: 100%;
-            aspect-ratio: 16 / 9;
+            flex: none;
+            aspect-ratio: 21 / 9;
         }
     }
 </style>

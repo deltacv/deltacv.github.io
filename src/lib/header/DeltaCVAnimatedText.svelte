@@ -10,14 +10,14 @@
     <h1>deltacv</h1>
     <div class="p-wrapper" in:fly={{ y: -50, delay: 1200, duration: 2500 }}>
         <p>
-            Making computer vision approachable to everyone.
+            Making&nbsp;computer&nbsp;vision approachable&nbsp;to&nbsp;everyone.
         </p>
     </div>
 </div>
 
 <style>
     .logo-text {
-        display: flex;
+        display: inline-flex;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
@@ -43,22 +43,25 @@
     .p-wrapper {
         margin-top: 0.4rem;
         min-width: 0;
+        padding-right: 1rem;
     }
 
     p {
         color: #8b949e;
-        font-size: clamp(1rem, 2.3vw, 1.7rem);
+        font-size: clamp(0.85rem, 4.5vw, 1.7rem);
         font-weight: 400;
         line-height: 1.3;
         margin: 0;
-        white-space: nowrap; /* keeps it one line by default */
+        white-space: nowrap; /* keeps it one line on desktop */
         overflow: hidden;
         text-overflow: ellipsis;
+        /* Force container to tightly wrap the exact width of the longest line, destroying invisible empty space */
+        width: min-content;
         transform: translate(var(--px), var(--py)) scale(var(--s));
     }
 
-    /* allow wrapping only when absolutely necessary */
-    @media (max-width: 480px) {
+    /* Allow wrapping on tablets and mobile screens, breaking perfectly at our non-breaking spaces */
+    @media (max-width: 900px) {
         .logo-text p {
             white-space: normal;
             text-overflow: unset;

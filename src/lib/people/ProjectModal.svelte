@@ -41,6 +41,26 @@
     function stopPropagation(e: Event) {
         e.stopPropagation();
     }
+
+    let contentEl: HTMLElement | undefined = $state();
+    let canScrollDown = $state(false);
+
+    function checkScroll() {
+        if (!contentEl) return;
+        canScrollDown =
+            contentEl.scrollHeight > contentEl.clientHeight &&
+            Math.ceil(contentEl.scrollTop + contentEl.clientHeight) < contentEl.scrollHeight - 5;
+    }
+
+    $effect(() => {
+        if (open && contentEl) {
+            checkScroll();
+            // Automatically re-check if layout changes (e.g. video loading or screen rotating)
+            const observer = new ResizeObserver(() => checkScroll());
+            observer.observe(contentEl);
+            return () => observer.disconnect();
+        }
+    });
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -83,7 +103,7 @@
                 </svg>
             </button>
 
-            <div class="modal-content">
+            <div class="modal-content" bind:this={contentEl} onscroll={checkScroll}>
                 <div class="modal-header">
                     <h2 id="modal-title">{title}</h2>
                 </div>
@@ -118,6 +138,12 @@
                 <div class="modal-body">
                     {@render children?.()}
                 </div>
+            </div>
+
+            <div class="scroll-indicator" class:visible={canScrollDown} aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6"/>
+                </svg>
             </div>
         </div>
     </div>
@@ -203,6 +229,7 @@
 
     .modal-header {
         padding: 24px 32px 16px;
+        flex-shrink: 0;
     }
 
     .modal-header h2 {
@@ -221,12 +248,16 @@
         padding: 0;
         display: flex;
         justify-content: center;
+        aspect-ratio: 16 / 9;
+        max-height: 400px;
+        overflow: hidden;
+        flex-shrink: 0; /* Prevents long text from crushing the video */
     }
 
     .modal-hero img,
     .modal-hero video {
-        width: 70%;
-        max-height: 400px;
+        width: 100%;
+        height: 100%;
         object-fit: var(--image-fit-object, cover);
         display: block;
     }
@@ -309,6 +340,39 @@
         border-color: #8b949e;
     }
 
+    .scroll-indicator {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: linear-gradient(to top, #0d1117 15%, transparent 100%);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding-bottom: 12px;
+        color: #8b949e;
+    }
+
+    .scroll-indicator.visible {
+        opacity: 1;
+    }
+
+    .scroll-indicator svg {
+        animation: bounce-scroll 2s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+    }
+
+    @keyframes bounce-scroll {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-6px); }
+        60% { transform: translateY(-3px); }
+    }
+
     @media (max-width: 600px) {
         .modal-container {
             border-radius: 12px;
@@ -321,6 +385,11 @@
 
         .modal-body {
             padding: 24px;
+        }
+
+        .scroll-indicator {
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
         }
     }
 </style>

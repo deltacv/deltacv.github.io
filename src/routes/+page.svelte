@@ -201,7 +201,7 @@
 
   .featured-section {
     width: 100%;
-    max-width: 1200px;
+    max-width: 950px;
     padding: 2rem 5vw 3rem;
     margin: 0 auto;
   }
@@ -268,7 +268,7 @@
   }
 
   @media (max-width: 800px) {
-    .secondary-grid {
+    .secondary-grid, .featured-section {
       grid-template-columns: 1fr;
       max-width: 500px;
     }

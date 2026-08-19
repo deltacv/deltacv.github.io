@@ -1,6 +1,6 @@
 <script lang="ts">
     import { setContext, tick } from "svelte";
-    import { ArrowLeft, ArrowRight } from "lucide-svelte";
+    import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-svelte";
 
     let { children } = $props();
 
@@ -30,6 +30,31 @@
     );
 
     let tabsContainer = $state<HTMLElement | null>(null);
+    let canScrollLeft = $state(false);
+    let canScrollRight = $state(false);
+
+    function checkScroll() {
+        if (!tabsContainer) return;
+        canScrollLeft = tabsContainer.scrollLeft > 0;
+        canScrollRight = tabsContainer.scrollLeft < tabsContainer.scrollWidth - tabsContainer.clientWidth - 1;
+    }
+
+    function scrollRight() {
+        if (tabsContainer) tabsContainer.scrollBy({ left: 150, behavior: 'smooth' });
+    }
+
+    function scrollLeft() {
+        if (tabsContainer) tabsContainer.scrollBy({ left: -150, behavior: 'smooth' });
+    }
+
+    $effect(() => {
+        if (tabsContainer) {
+            checkScroll();
+            window.addEventListener('resize', checkScroll);
+            return () => window.removeEventListener('resize', checkScroll);
+        }
+    });
+
     async function scrollToTabs() {
         await tick();
         if (tabsContainer) {
@@ -39,19 +64,33 @@
 </script>
 
 <div class="tabs-wrapper">
-    <!-- Tabs Navigation -->
-    <div class="tabs-container" bind:this={tabsContainer}>
-        {#each tabs as tab}
-            <button
-                class="px-8 py-4 font-bold text-[1.1rem] transition-colors duration-200 border-b-[3px] {activeTabId ===
-                tab.id
-                    ? 'border-[#58a6ff] text-[#c9d1d9]'
-                    : 'border-transparent text-[#8b949e] hover:text-[#c9d1d9] hover:border-[#484f58]'}"
-                onclick={() => (activeTabId = tab.id)}
-            >
-                {tab.title}
+    <div class="tabs-nav-wrapper">
+        {#if canScrollLeft}
+            <button class="scroll-arrow left" onclick={scrollLeft} aria-label="Scroll left">
+                <ChevronLeft size={24} />
             </button>
-        {/each}
+        {/if}
+
+        <!-- Tabs Navigation -->
+        <div class="tabs-container" bind:this={tabsContainer} onscroll={checkScroll}>
+            {#each tabs as tab}
+                <button
+                    class="px-5 sm:px-8 py-3 sm:py-4 font-bold text-[0.95rem] sm:text-[1.1rem] transition-colors duration-200 border-b-[3px] {activeTabId ===
+                    tab.id
+                        ? 'border-[#58a6ff] text-[#c9d1d9]'
+                        : 'border-transparent text-[#8b949e] hover:text-[#c9d1d9] hover:border-[#484f58]'}"
+                    onclick={() => (activeTabId = tab.id)}
+                >
+                    {tab.title}
+                </button>
+            {/each}
+        </div>
+
+        {#if canScrollRight}
+            <button class="scroll-arrow right" onclick={scrollRight} aria-label="Scroll right">
+                <ChevronRight size={24} />
+            </button>
+        {/if}
     </div>
 
     <!-- Tab Content -->
@@ -100,21 +139,74 @@
 </div>
 
 <style>
-    .tabs-wrapper {
+    .tabs-nav-wrapper {
+        position: relative;
         width: 100%;
+        margin-bottom: 2.5rem;
+    }
+
+    .scroll-arrow {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 48px;
+        display: flex;
+        align-items: center;
+        border: none;
+        color: #8b949e;
+        cursor: pointer;
+        z-index: 10;
+        transition: color 0.2s;
+    }
+
+    .scroll-arrow:hover {
+        color: #c9d1d9;
+    }
+
+    .scroll-arrow.left {
+        left: -8px;
+        justify-content: flex-start;
+        background: linear-gradient(to right, #0d1117 40%, transparent);
+    }
+
+    .scroll-arrow.right {
+        right: -8px;
+        justify-content: flex-end;
+        background: linear-gradient(to left, #0d1117 40%, transparent);
     }
 
     .tabs-container {
         display: flex;
-        justify-content: center;
-        margin-bottom: 2.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
         border-bottom: 1px solid #21262d;
         scroll-margin-top: 120px;
+    }
+
+    /* Safely centers tabs when they fit, but allows left-aligned scrolling when they overflow */
+    .tabs-container::before,
+    .tabs-container::after {
+        content: '';
+        margin: auto;
+    }
+
+    .tabs-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media (min-width: 600px) {
+        .tabs-container {
+            justify-content: center;
+        }
     }
 
     .tabs-container button {
         cursor: pointer;
         background: transparent;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
     .tab-content {
