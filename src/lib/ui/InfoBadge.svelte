@@ -20,7 +20,7 @@
         color: #8b949e;
         font-size: 0.95rem;
         font-weight: 500;
-        text-align: center;
+        text-align: left;
         max-width: 100%;
         line-height: 1.4;
     }
@@ -36,7 +36,7 @@
 
     @media (max-width: 600px) {
         .info-badge {
-            text-align: center;
+            text-align: left;
             gap: 10px;
         }
 

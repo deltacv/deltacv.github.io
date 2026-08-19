@@ -41,13 +41,15 @@
                 <!-- <p class="subtitle">Software Developer</p> -->
                 <div class="info-badges-container">
                     <InfoBadge title="Universidad Tecmilenio" color="#7d9ebf">
-                        <GraduationCap size={18} strokeWidth={2} />
-                        <span>
-                            Software Engineer • Universidad Tecmilenio
-                            ('24&nbsp;-&nbsp;'28)
-                        </span>
+                        <GraduationCap size={18} strokeWidth={2} class="shrink-0" />
+                        <div class="marquee-wrapper">
+                            <div class="marquee-content">
+                                <span>Software Engineer • Universidad Tecmilenio ('24&nbsp;-&nbsp;'28)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <span aria-hidden="true">Software Engineer • Universidad Tecmilenio ('24&nbsp;-&nbsp;'28)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            </div>
+                        </div>
                     </InfoBadge>
-                    <div class="flex flex-row flex-wrap justify-center gap-3.5 mt-1">
+                    <div class="flex flex-row flex-wrap justify-center gap-3.5 mt-1.5">
                         <InfoBadge title="Location">
                             <MapPin size={18} strokeWidth={2} />
                             <span>Chihuahua, CHH, Mexico</span>
@@ -588,9 +590,42 @@
     /* CSS Grid */
     .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-        justify-items: center;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .marquee-wrapper {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .marquee-content {
+        display: inline-flex;
+        white-space: nowrap;
+    }
+
+    .marquee-content span {
+        white-space: nowrap !important;
+        text-wrap: nowrap !important;
+        padding-left: 20px; /* Ensures the 'S' is clear of the left edge fade mask on load */
+    }
+
+    @media (max-width: 600px) {
+        .marquee-wrapper {
+            max-width: 65vw;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        }
+        .marquee-content {
+            animation: marquee-loop 14s linear infinite;
+            animation-delay: 1s;
+        }
+    }
+
+    @keyframes marquee-loop {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
     }
 
     .projects-grid :global(.portfolio-card) {

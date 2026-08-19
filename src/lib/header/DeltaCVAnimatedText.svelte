@@ -8,9 +8,11 @@
     out:fade={{ duration: 1200 }}
 >
     <h1>deltacv</h1>
-    <p in:fly={{ y: -50, delay: 1200, duration: 2500 }}>
-        Making computer vision approachable to everyone.
-    </p>
+    <div class="p-wrapper" in:fly={{ y: -50, delay: 1200, duration: 2500 }}>
+        <p>
+            Making computer vision approachable to everyone.
+        </p>
+    </div>
 </div>
 
 <style>
@@ -38,12 +40,17 @@
         transform: translate(var(--hx), var(--hy)) scale(var(--s));
     }
 
+    .p-wrapper {
+        margin-top: 0.4rem;
+        min-width: 0;
+    }
+
     p {
         color: #8b949e;
         font-size: clamp(1rem, 2.3vw, 1.7rem);
         font-weight: 400;
         line-height: 1.3;
-        margin-top: 0.4rem;
+        margin: 0;
         white-space: nowrap; /* keeps it one line by default */
         overflow: hidden;
         text-overflow: ellipsis;
