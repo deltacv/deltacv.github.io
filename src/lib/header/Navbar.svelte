@@ -1,5 +1,7 @@
 <script lang="ts">
-  export let visible = true;
+export let visible = true;
+  export let transparent = false;
+  export let collapsed = false;
   
   import deltacv_logo from "$lib/icons/deltacv.svg";
   import { onMount } from "svelte";
@@ -13,6 +15,30 @@
   let activeDropdown: string | null = null;
   let windowScrollY = 0;
   let lastScrollY = 0;
+  let manuallyExpanded = false;
+
+  $: isDesktopCollapsed = collapsed && !manuallyExpanded;
+
+  let isFullyExpanded = !collapsed;
+  let expandTimeout: any;
+
+  $: {
+    if (!isDesktopCollapsed) {
+      if (typeof window !== 'undefined') {
+        clearTimeout(expandTimeout);
+        expandTimeout = setTimeout(() => {
+          isFullyExpanded = true;
+        }, 700); // Wait for the 0.7s CSS transition to finish
+      } else {
+        isFullyExpanded = true;
+      }
+    } else {
+      if (typeof window !== 'undefined') {
+        clearTimeout(expandTimeout);
+      }
+      isFullyExpanded = false;
+    }
+  }
 
   function toggleDropdown(name: string, event: any) {
     event.stopPropagation();
@@ -81,67 +107,75 @@
 <div class="navbar-wrapper" bind:this={navbarWrapper}>
   {#if visible}
     <div transition:fly={{ y: -100, duration: 400, easing: cubicOut }}>
-      <header class="header" bind:this={headerEl}>
+      <header class="header" class:is-transparent={transparent} bind:this={headerEl}>
     <div class="header-inner">
       <a href="/" class="skip-link">
         <div class="logo"><img src={deltacv_logo} alt="deltacv logo" /></div>
         <h1 class="header-title">deltacv</h1>
       </a>
 
-      <nav class="nav-buttons desktop">
-        <a href="/" class="nav-button" class:active={$page.url.pathname === "/"}
-          >Home</a
-        >
+      <div class="right-section">
+        <nav class="nav-buttons desktop" class:is-desktop-collapsed={isDesktopCollapsed} class:is-fully-expanded={isFullyExpanded}>
+          <a href="/" class="nav-button" class:active={$page.url.pathname === "/"}
+            >Home</a
+          >
 
-        <div class="nav-dropdown" class:is-open={activeDropdown === 'projects'}>
-          <button class="nav-button" class:active={$page.url.pathname === "/eocv-sim" || $page.url.pathname === "/papervision"} on:click={(e) => toggleDropdown('projects', e)}>Projects ▾</button>
-          <div class="dropdown-content">
-            <a
-              href="/eocv-sim"
-              class="dropdown-item"
-              class:active={$page.url.pathname === "/eocv-sim"}
-              on:click={() => (activeDropdown = null)}
-            >
-              EOCV-Sim
-            </a>
+          <div class="nav-dropdown" class:is-open={activeDropdown === 'projects'}>
+            <button class="nav-button" class:active={$page.url.pathname === "/visionbench" || $page.url.pathname === "/visiongraph"} on:click={(e) => toggleDropdown('projects', e)}>Projects ▾</button>
+            <div class="dropdown-content">
+              <a
+                href="/visionbench"
+                class="dropdown-item"
+                class:active={$page.url.pathname === "/visionbench"}
+                on:click={() => (activeDropdown = null)}
+              >
+                VisionBench
+              </a>
 
-            <a
-              href="/papervision"
-              class="dropdown-item"
-              class:active={$page.url.pathname === "/papervision"}
-              on:click={() => (activeDropdown = null)}
-            >
-              PaperVision
-            </a>
+              <a
+                href="/visiongraph"
+                class="dropdown-item"
+                class:active={$page.url.pathname === "/visiongraph"}
+                on:click={() => (activeDropdown = null)}
+              >
+                VisionGraph
+              </a>
+            </div>
           </div>
+
+          <div class="nav-dropdown" class:is-open={activeDropdown === 'about'}>
+            <button class="nav-button" class:active={$page.url.pathname.startsWith("/blog") || $page.url.pathname.startsWith("/people")} on:click={(e) => toggleDropdown('about', e)}>About ▾</button>
+            <div class="dropdown-content">
+              <a
+                href="/blog"
+                class="dropdown-item"
+                class:active={$page.url.pathname.startsWith("/blog")}
+                on:click={() => (activeDropdown = null)}
+              >
+                Blog
+              </a>
+              <a
+                href="/people"
+                class="dropdown-item"
+                class:active={$page.url.pathname.startsWith("/people")}
+                on:click={() => (activeDropdown = null)}
+              >
+                People
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="desktop-hamburger-wrapper" class:is-visible={collapsed}>
+          <button class="hamburger desktop-hamburger" on:click={() => manuallyExpanded = !manuallyExpanded} aria-label="Toggle menu">
+            <div class:open={manuallyExpanded}></div>
+          </button>
         </div>
 
-        <div class="nav-dropdown" class:is-open={activeDropdown === 'about'}>
-          <button class="nav-button" class:active={$page.url.pathname.startsWith("/blog") || $page.url.pathname.startsWith("/people")} on:click={(e) => toggleDropdown('about', e)}>About ▾</button>
-          <div class="dropdown-content">
-            <a
-              href="/blog"
-              class="dropdown-item"
-              class:active={$page.url.pathname.startsWith("/blog")}
-              on:click={() => (activeDropdown = null)}
-            >
-              Blog
-            </a>
-            <a
-              href="/people"
-              class="dropdown-item"
-              class:active={$page.url.pathname.startsWith("/people")}
-              on:click={() => (activeDropdown = null)}
-            >
-              People
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      <button class="hamburger" on:click={toggleMenu} aria-label="Toggle menu">
-        <div class:open={menuOpen}></div>
-      </button>
+        <button class="hamburger mobile-hamburger" on:click={toggleMenu} aria-label="Toggle menu">
+          <div class:open={menuOpen}></div>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -161,25 +195,25 @@
       </a>
 
       <details class="mobile-dropdown">
-        <summary class="mobile-dropdown-summary" class:active={$page.url.pathname === "/eocv-sim" || $page.url.pathname === "/papervision"}>Projects</summary>
+        <summary class="mobile-dropdown-summary" class:active={$page.url.pathname === "/visionbench" || $page.url.pathname === "/visiongraph"}>Projects</summary>
 
         <div class="mobile-dropdown-items">
           <a
-            href="/eocv-sim"
+            href="/visionbench"
             class="mobile-dropdown-link"
-            class:active={$page.url.pathname === "/eocv-sim"}
+            class:active={$page.url.pathname === "/visionbench"}
             on:click={() => (menuOpen = false)}
           >
-            EOCV-Sim
+            VisionBench
           </a>
 
           <a
-            href="/papervision"
+            href="/visiongraph"
             class="mobile-dropdown-link"
-            class:active={$page.url.pathname === "/papervision"}
+            class:active={$page.url.pathname === "/visiongraph"}
             on:click={() => (menuOpen = false)}
           >
-            PaperVision
+            VisionGraph
           </a>
         </div>
       </details>
@@ -228,6 +262,15 @@
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(48, 54, 61, 0.5);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .header.is-transparent {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: transparent;
+    box-shadow: none;
   }
 
   .header-inner {
@@ -238,6 +281,14 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 0;
+    min-height: 65px;
+  }
+
+  .right-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
   }
 
   .skip-link {
@@ -270,6 +321,38 @@
   .nav-buttons {
     display: flex;
     gap: 0.75rem;
+  }
+
+  .nav-buttons.desktop {
+    overflow: hidden;
+    max-width: 600px;
+    opacity: 1;
+    transform: translateX(0);
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    transition: max-width 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s ease, transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-buttons.desktop.is-fully-expanded {
+    overflow: visible;
+  }
+
+  .nav-buttons.desktop.is-desktop-collapsed {
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(20px);
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+
+  .desktop-hamburger-wrapper {
+    display: none;
+    overflow: hidden;
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s ease;
   }
 
   .nav-button {
@@ -346,6 +429,22 @@
     min-height: 44px;
     position: relative;
     box-sizing: border-box;
+  }
+
+  @media (min-width: 1025px) {
+    .desktop-hamburger-wrapper {
+      display: flex;
+    }
+    .desktop-hamburger-wrapper.is-visible {
+      max-width: 60px; /* Width of hamburger + padding */
+      opacity: 1;
+    }
+    .desktop-hamburger {
+      display: flex;
+    }
+    .mobile-hamburger {
+      display: none !important;
+    }
   }
 
   .hamburger div {

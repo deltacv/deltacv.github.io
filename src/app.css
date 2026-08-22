@@ -65,7 +65,7 @@
 .img-loaded {
     opacity: 1;
     transform: scale(1);
-    filter: blur(0);
+    filter: none; /* Removes the expensive filter rendering pipeline completely */
 }
 
 /* Progressive Video Loading */
@@ -82,5 +82,5 @@
 .video-loaded {
     opacity: 1;
     transform: scale(1);
-    filter: blur(0);
+    filter: none; /* Removes the expensive filter rendering pipeline completely */
 }

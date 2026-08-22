@@ -41,15 +41,29 @@
                 <!-- <p class="subtitle">Software Developer</p> -->
                 <div class="info-badges-container">
                     <InfoBadge title="Universidad Tecmilenio" color="#7d9ebf">
-                        <GraduationCap size={18} strokeWidth={2} class="shrink-0" />
+                        <GraduationCap
+                            size={18}
+                            strokeWidth={2}
+                            class="shrink-0"
+                        />
                         <div class="marquee-wrapper">
                             <div class="marquee-content">
-                                <span>Software Engineer • Universidad Tecmilenio ('24&nbsp;-&nbsp;'28)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <span class="marquee-duplicate" aria-hidden="true">Software Engineer • Universidad Tecmilenio ('24&nbsp;-&nbsp;'28)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <span
+                                    >Software Engineer • Universidad Tecmilenio
+                                    ('24&nbsp;-&nbsp;'28)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+                                >
+                                <span
+                                    class="marquee-duplicate"
+                                    aria-hidden="true"
+                                    >Software Engineer • Universidad Tecmilenio
+                                    ('24&nbsp;-&nbsp;'28)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+                                >
                             </div>
                         </div>
                     </InfoBadge>
-                    <div class="flex flex-row flex-wrap justify-center gap-3.5 mt-1.5">
+                    <div
+                        class="flex flex-row flex-wrap justify-center gap-3.5 mt-1.5"
+                    >
                         <InfoBadge title="Location">
                             <MapPin size={18} strokeWidth={2} />
                             <span>Chihuahua, CHH, Mexico</span>
@@ -163,8 +177,6 @@
                             <div class="actions">
                                 <a
                                     href="https://github.com/serivesmejia/HexaGeoWareOddysey"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                     class="btn btn-primary"
                                     >View on GitHub (archive)</a
                                 >
@@ -197,9 +209,8 @@
                                 user's choice.
                             </p>
                             <p>
-                                The app runs as a persistent <strong
-                                    >foreground service</strong
-                                >
+                                The app runs as a persistent
+                                <strong>foreground service</strong>
                                 to keep scanning reliably in the background. To handle
                                 connectivity gaps, I implemented a local queue that
                                 retries failed messages automatically once the network
@@ -216,9 +227,9 @@
 
                     <!-- The Grid -->
                     <div class="projects-grid">
-                        <!-- Project: PaperVision -->
+                        <!-- Project: VisionGraph -->
                         <PortfolioProject
-                            title="PaperVision"
+                            title="VisionGraph"
                             description="A node-based visual programming environment for OpenCV. Solo developed over 3 years."
                             image={m("papervision-hero.png")}
                             tags={[
@@ -231,7 +242,7 @@
                         >
                             <h3>My Role & Architecture</h3>
                             <p>
-                                I built PaperVision from scratch to solve the
+                                I built VisionGraph from scratch to solve the
                                 steep learning curve of OpenCV in Java. Over
                                 three years, the project grew into a full
                                 node-graph interface that translates visual
@@ -251,19 +262,17 @@
                             <div class="actions">
                                 <a
                                     href="https://github.com/deltacv/PaperVision"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                     class="btn btn-primary">View on GitHub</a
                                 >
-                                <a href="/papervision" class="btn btn-secondary"
+                                <a href="/visiongraph" class="btn btn-secondary"
                                     >Learn More</a
                                 >
                             </div>
                         </PortfolioProject>
 
-                        <!-- Project: EOCV-Sim -->
+                        <!-- Project: VisionBench -->
                         <PortfolioProject
-                            title="EOCV-Sim"
+                            title="VisionBench"
                             description="A standalone desktop simulator for testing FTC vision pipelines on PC. Scaled to support thousands of users."
                             image={m("eocvsim-hero.png")}
                             tags={["Java", "Swing", "Reflection", "OpenCV"]}
@@ -271,7 +280,7 @@
                             <h3>My Role & Technical Challenges</h3>
                             <p>
                                 Started as a solo project when I was 14,
-                                EOCV-Sim was built to fix the painfully slow,
+                                VisionBench was built to fix the painfully slow,
                                 hardware-dependant deployment cycle of FTC
                                 robotics. I created a simulated environment in <strong
                                     >Java</strong
@@ -290,11 +299,9 @@
                             <div class="actions">
                                 <a
                                     href="https://github.com/deltacv/EOCV-Sim"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                     class="btn btn-primary">GitHub Repository</a
                                 >
-                                <a href="/eocv-sim" class="btn btn-secondary"
+                                <a href="/visionbench" class="btn btn-secondary"
                                     >Learn More</a
                                 >
                             </div>
@@ -333,8 +340,6 @@
                             <div class="actions">
                                 <a
                                     href="https://github.com/deltacv/deltacv.org"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                     class="btn btn-primary">Source Code</a
                                 >
                                 <a href="/" class="btn btn-secondary"
@@ -621,8 +626,20 @@
         .marquee-wrapper {
             max-width: 65vw;
             overflow: hidden;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                black 5%,
+                black 95%,
+                transparent 100%
+            );
+            mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                black 5%,
+                black 95%,
+                transparent 100%
+            );
         }
         .marquee-duplicate {
             display: inline-block;
@@ -634,8 +651,12 @@
     }
 
     @keyframes marquee-loop {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
     }
 
     .projects-grid :global(.portfolio-card) {

@@ -117,7 +117,8 @@
     .image-container {
         position: relative;
         width: 100%;
-        aspect-ratio: 16 / 9;
+        flex: 1; /* Absorbs any extra space if the card is stretched by CSS grid */
+        aspect-ratio: 21 / 9; /* Flatter, ultrawide footprint to reduce overall vertical height */
         overflow: hidden;
         background-color: #21262d;
     }

@@ -21,7 +21,7 @@
   <title>deltacv - Computer Vision Tools</title>
   <meta
     name="description"
-    content="deltacv builds developer tools and visual programming interfaces for computer vision — including PaperVision, a node-based OpenCV pipeline editor, and EOCV-Sim for FTC robotics."
+    content="deltacv builds developer tools and visual programming interfaces for computer vision — including VisionGraph, a node-based OpenCV pipeline editor, and VisionBench for competitive robotics."
   />
 </svelte:head>
 
@@ -38,25 +38,25 @@
     <!-- Featured Project Full Width -->
     <div class="featured-section">
       <FeaturedProject
-        title="PaperVision"
-        description="Create your custom OpenCV algorithms using a user-friendly visual interface inspired by industry-leading node editors. Built from the ground up to solve the steep learning curve of Computer Vision in Java & Python."
+        title="VisionGraph"
+        description="Create your custom computer vision algorithms using a user-friendly visual interface inspired by industry-leading node editors. Built from the ground up to solve the steep learning curve of traditional coding in Java & Python."
         image={m("papervision.png")}
         hoverImage={m("papervision-hero.mp4")}
         imageFit="fill"
         hoverImageFit="fit"
-        href="/papervision"
+        href="/visiongraph"
       />
     </div>
 
     <!-- Secondary Projects Grid -->
     <div class="secondary-grid">
       <Project
-        title="EOCV-Sim"
+        title="VisionBench"
         description="Develop, test, and tune your EasyOpenCV pipelines directly on your computer with a simple interface!"
         image={m("eocvsim.png")}
         hoverImage={m("eocvsim-tuner.mp4")}
-        imageFit="fit"
-        href="/eocv-sim"
+        imageFit="fill"
+        href="/visionbench"
       />
 
       <!-- Meet the Developers Card -->
@@ -201,7 +201,7 @@
 
   .featured-section {
     width: 100%;
-    max-width: 950px;
+    max-width: 1150px;
     padding: 2rem 5vw 3rem;
     margin: 0 auto;
   }
@@ -212,7 +212,7 @@
     align-items: stretch;
     gap: 32px;
     width: 100%;
-    max-width: 950px;
+    max-width: 1150px;
     padding: 0 5vw 4rem;
     margin: 0 auto;
   }
@@ -268,7 +268,8 @@
   }
 
   @media (max-width: 800px) {
-    .secondary-grid, .featured-section {
+    .secondary-grid,
+    .featured-section {
       grid-template-columns: 1fr;
       max-width: 500px;
     }

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { ChevronDown } from "lucide-svelte";
+    import { ChevronDown, AlertTriangle } from "lucide-svelte";
     import { m } from "$lib/media";
 
     interface Props {
@@ -13,6 +13,7 @@
         scrollIndicatorColorClass?: string;
         videoFit?: "cover" | "contain";
         actions?: import('svelte').Snippet;
+        bannerText?: string;
     }
 
     let {
@@ -24,7 +25,8 @@
         introPostText = "",
         scrollIndicatorColorClass = "text-cyan-400",
         videoFit = "cover",
-        actions
+        actions,
+        bannerText
     }: Props = $props();
 
     let currentWord = $state("");
@@ -150,8 +152,16 @@
     <div class="container mx-auto px-6 relative z-10">
         <div class="flex flex-col items-center gap-12">
             <!-- Left Side: Text -->
-            <div class="max-w-4xl text-center">
-                <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6 animate-hero-title">
+            <div class="max-w-4xl text-center flex flex-col items-center">
+                {#if bannerText}
+                    <div class="mb-6 animate-hero-text" style="animation-delay: 0.05s;">
+                        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors cursor-default text-sm text-gray-300 font-medium backdrop-blur-md">
+                            <AlertTriangle size={16} class="text-cyan-400" />
+                            {bannerText}
+                        </div>
+                    </div>
+                {/if}
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6 animate-hero-title" style="font-family: 'Outfit', sans-serif;">
                     <span style="background: {titleGradient}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                         {title}
                     </span>

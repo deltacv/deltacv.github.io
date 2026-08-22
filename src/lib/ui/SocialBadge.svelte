@@ -12,8 +12,8 @@
 
 <a
     {href}
-    target="_blank"
-    rel="noopener noreferrer"
+    target={href.includes('github.com') ? undefined : "_blank"}
+    rel={href.includes('github.com') ? undefined : "noopener noreferrer"}
     class="social-badge text-[#8b949e] {colorClass} transition-colors duration-200"
     aria-label={ariaLabel}
 >
