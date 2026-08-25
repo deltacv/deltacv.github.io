@@ -387,7 +387,7 @@
                             class="absolute inset-0 p-5 flex flex-col md:flex-row gap-6 md:gap-20 items-start z-10 w-full"
                         >
                             <div
-                                class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 transition-transform duration-500 backdrop-blur-md relative z-10"
+                                class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 group-data-[mobile-active=true]/pv:-translate-y-1 transition-transform duration-500 backdrop-blur-md relative z-10"
                             >
                                 <div
                                     class="hidden md:block absolute right-[-6px] top-[16px] w-2.5 h-2.5 bg-amber-500 rounded-full border border-gray-800"
@@ -405,10 +405,10 @@
                                 ></div>
                             </div>
                             <div
-                                class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 transition-transform duration-500 delay-75 backdrop-blur-md relative z-10 ml-8 md:ml-0 md:mt-10"
+                                class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 group-data-[mobile-active=true]/pv:-translate-y-1 transition-transform duration-500 delay-75 backdrop-blur-md relative z-10 ml-8 md:ml-0 md:mt-10"
                             >
                                 <div
-                                    class="hidden md:block absolute left-[-6px] top-[16px] w-2.5 h-2.5 bg-amber-500 rounded-full border border-gray-800 opacity-50 group-hover/pv:opacity-100 transition-opacity"
+                                    class="hidden md:block absolute left-[-6px] top-[16px] w-2.5 h-2.5 bg-amber-500 rounded-full border border-gray-800 opacity-50 group-hover/pv:opacity-100 group-data-[mobile-active=true]/pv:opacity-100 transition-opacity"
                                 ></div>
                                 <div
                                     class="bg-emerald-500/20 text-emerald-400 text-[9px] uppercase font-bold tracking-wider px-2 py-1 rounded inline-block mb-3"
@@ -439,13 +439,13 @@
                             class="relative w-full max-w-[200px] bg-[linear-gradient(45deg,#1f2937_25%,transparent_25%,transparent_75%,#1f2937_75%,#1f2937),linear-gradient(45deg,#1f2937_25%,transparent_25%,transparent_75%,#1f2937_75%,#1f2937)] bg-[length:16px_16px] bg-[position:0_0,8px_8px] overflow-hidden rounded-xl border border-gray-700/50 shadow-inner h-32 flex items-center justify-center"
                         >
                             <div
-                                class="relative w-16 h-16 border-2 border-rose-500 rounded-lg rotate-12 group-hover/ui:rotate-45 transition-transform duration-1000 backdrop-blur-sm"
+                                class="relative w-16 h-16 border-2 border-rose-500 rounded-lg rotate-12 group-hover/ui:rotate-45 group-data-[mobile-active=true]/ui:rotate-45 transition-transform duration-1000 backdrop-blur-sm"
                             >
                                 <div
                                     class="absolute inset-2 border border-blue-500/50 border-dashed rounded flex flex-col items-center justify-center bg-blue-500/10"
                                 >
                                     <span
-                                        class="text-blue-400 text-[8px] font-mono whitespace-nowrap group-hover/ui:scale-110 transition-transform"
+                                        class="text-blue-400 text-[8px] font-mono whitespace-nowrap group-hover/ui:scale-110 group-data-[mobile-active=true]/ui:scale-110 transition-transform"
                                         >Sides: 4</span
                                     >
                                 </div>
@@ -460,7 +460,7 @@
                     title="Live Parameter Tuning"
                     desc="Allows you to adjust pipeline parameters in real-time."
                     color="cyan"
-                    class="group/tune flex flex-col hover:border-cyan-500/50"
+                    class="group/tune flex flex-col hover:border-cyan-500/50 data-[mobile-active=true]:border-cyan-500/50"
                 >
                     <div class="mt-auto pt-6">
                         <div
@@ -472,7 +472,7 @@
                                 >
                                     <span>blur_size</span>
                                     <span
-                                        class="text-cyan-400 group-hover/tune:text-cyan-300 transition-colors w-8 text-right"
+                                        class="text-cyan-400 group-hover/tune:text-cyan-300 group-data-[mobile-active=true]/tune:text-cyan-300 transition-colors w-8 text-right"
                                         >3.5</span
                                     >
                                 </div>
@@ -480,7 +480,7 @@
                                     class="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden"
                                 >
                                     <div
-                                        class="h-full bg-cyan-500/60 w-[35%] group-hover/tune:w-[75%] transition-all duration-1000 ease-out relative"
+                                        class="h-full bg-cyan-500/60 w-[35%] group-hover/tune:w-[75%] group-data-[mobile-active=true]/tune:w-[75%] transition-all duration-1000 ease-out relative"
                                     >
                                         <div
                                             class="absolute right-0 top-0 bottom-0 w-1.5 bg-cyan-400 rounded-full"
@@ -494,7 +494,7 @@
                                 >
                                     <span>threshold</span>
                                     <span
-                                        class="text-rose-400 group-hover/tune:text-rose-300 transition-colors w-8 text-right"
+                                        class="text-rose-400 group-hover/tune:text-rose-300 group-data-[mobile-active=true]/tune:text-rose-300 transition-colors w-8 text-right"
                                         >128</span
                                     >
                                 </div>
@@ -502,7 +502,7 @@
                                     class="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden"
                                 >
                                     <div
-                                        class="h-full bg-rose-500/60 w-[60%] group-hover/tune:w-[25%] transition-all duration-1000 ease-out relative"
+                                        class="h-full bg-rose-500/60 w-[60%] group-hover/tune:w-[25%] group-data-[mobile-active=true]/tune:w-[25%] transition-all duration-1000 ease-out relative"
                                     >
                                         <div
                                             class="absolute right-0 top-0 bottom-0 w-1.5 bg-rose-400 rounded-full"
@@ -523,7 +523,7 @@
                     class="md:col-span-2 lg:col-span-2 flex flex-col group/cg md:[&>div>p]:max-w-[45%] md:[&>div>h3]:max-w-[45%]"
                 >
                     <div
-                        class="hidden md:flex absolute right-0 bottom-0 w-[50%] max-w-sm h-full max-h-[145px] flex-col bg-gray-900 border-l border-t border-emerald-500/30 rounded-tl-xl rounded-br-[22px] shadow-2xl transition-all duration-500 group-hover/cg:-translate-x-3 group-hover/cg:-translate-y-3 group-hover/cg:border-emerald-400/50 z-0 overflow-hidden pointer-events-none"
+                        class="hidden md:flex absolute right-0 bottom-0 w-[50%] max-w-sm h-full max-h-[145px] flex-col bg-gray-900 border-l border-t border-emerald-500/30 rounded-tl-xl rounded-br-[22px] shadow-2xl transition-all duration-500 group-hover/cg:-translate-x-3 group-data-[mobile-active=true]/cg:-translate-x-3 group-hover/cg:-translate-y-3 group-data-[mobile-active=true]/cg:-translate-y-3 group-hover/cg:border-emerald-400/50 group-data-[mobile-active=true]/cg:border-emerald-400/50 z-0 overflow-hidden pointer-events-none"
                     >
                         <div
                             class="bg-gray-800/80 px-3 py-1.5 flex items-center border-b border-gray-700"
@@ -534,7 +534,7 @@
                             >
                         </div>
                         <div
-                            class="p-4 text-[10px] font-mono leading-loose text-gray-300 opacity-70 group-hover/cg:opacity-100 transition-opacity"
+                            class="p-4 text-[10px] font-mono leading-loose text-gray-300 opacity-70 group-hover/cg:opacity-100 group-data-[mobile-active=true]/cg:opacity-100 transition-opacity"
                         >
                             <span class="text-rose-400">public class</span>
                             <span class="text-amber-300">MyPipeline</span>
@@ -591,22 +591,22 @@
                     class="md:col-span-2 lg:col-span-2 flex flex-col group/ui md:[&>div>p]:max-w-[45%] md:[&>div>h3]:max-w-[45%]"
                 >
                     <div
-                        class="hidden md:flex absolute right-0 bottom-0 w-[50%] max-w-xs h-full max-h-[145px] flex-col bg-[#0b0e14] border-l border-t border-blue-500/30 rounded-tl-xl rounded-br-[22px] shadow-2xl transition-all duration-500 group-hover/ui:-translate-x-3 group-hover/ui:-translate-y-3 group-hover/ui:border-blue-400/50 z-0 overflow-hidden backdrop-blur-xl p-5 gap-3 justify-center"
+                        class="hidden md:flex absolute right-0 bottom-0 w-[50%] max-w-xs h-full max-h-[145px] flex-col bg-[#0b0e14] border-l border-t border-blue-500/30 rounded-tl-xl rounded-br-[22px] shadow-2xl transition-all duration-500 group-hover/ui:-translate-x-3 group-data-[mobile-active=true]/ui:-translate-x-3 group-hover/ui:-translate-y-3 group-data-[mobile-active=true]/ui:-translate-y-3 group-hover/ui:border-blue-400/50 group-data-[mobile-active=true]/ui:border-blue-400/50 z-0 overflow-hidden backdrop-blur-xl p-5 gap-3 justify-center"
                     >
                         <div
-                            class="flex items-center gap-2 bg-blue-950/40 border border-blue-500/30 px-3 py-1.5 rounded-md text-blue-400 text-[9px] font-mono shadow-inner group-hover/ui:-translate-y-1 transition-transform duration-300"
+                            class="flex items-center gap-2 bg-blue-950/40 border border-blue-500/30 px-3 py-1.5 rounded-md text-blue-400 text-[9px] font-mono shadow-inner group-hover/ui:-translate-y-1 group-data-[mobile-active=true]/ui:-translate-y-1 transition-transform duration-300"
                         >
                             <Camera size={12} class="flex-shrink-0" />
                             <span class="truncate">LIVE_WEBCAM</span>
                         </div>
                         <div
-                            class="flex items-center gap-2 bg-purple-950/40 border border-purple-500/30 px-3 py-1.5 rounded-md text-purple-400 text-[9px] font-mono shadow-inner group-hover/ui:-translate-y-1 transition-transform duration-300 delay-75"
+                            class="flex items-center gap-2 bg-purple-950/40 border border-purple-500/30 px-3 py-1.5 rounded-md text-purple-400 text-[9px] font-mono shadow-inner group-hover/ui:-translate-y-1 group-data-[mobile-active=true]/ui:-translate-y-1 transition-transform duration-300 delay-75"
                         >
                             <Video size={12} class="flex-shrink-0" />
                             <span class="truncate">VIDEO_TEST.MP4</span>
                         </div>
                         <div
-                            class="flex items-center gap-2 bg-emerald-950/40 border border-emerald-500/30 px-3 py-1.5 rounded-md text-emerald-400 text-[9px] font-mono shadow-inner group-hover/ui:-translate-y-1 transition-transform duration-300 delay-150"
+                            class="flex items-center gap-2 bg-emerald-950/40 border border-emerald-500/30 px-3 py-1.5 rounded-md text-emerald-400 text-[9px] font-mono shadow-inner group-hover/ui:-translate-y-1 group-data-[mobile-active=true]/ui:-translate-y-1 transition-transform duration-300 delay-150"
                         >
                             <ImageIcon size={12} class="flex-shrink-0" />
                             <span class="truncate">IMAGE_01.JPG</span>

@@ -1,5 +1,5 @@
 export const load = () => {
     return {
-        hasHero: true
+        mediaPrefix: 'papervision'
     };
 };

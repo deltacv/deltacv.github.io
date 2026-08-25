@@ -162,9 +162,10 @@
                             {productName} is a versatile desktop tool built for
                             <span class="text-cyan-400 font-semibold"
                                 >developers and robotics teams</span
-                            >. Born from the world of competitive robotics, it provides a native OpenCV
-                            environment, letting you rapidly test and refine computer vision
-                            pipelines right on your computer.
+                            >. Born from the world of competitive robotics, it
+                            provides a native OpenCV environment, letting you
+                            rapidly test and refine computer vision pipelines
+                            right on your computer.
                         </p>
                     </div>
 
@@ -274,7 +275,7 @@
                     class="md:col-span-2 lg:col-span-2 flex flex-col group/ui md:[&>div>p]:max-w-[45%] md:[&>div>h3]:max-w-[45%]"
                 >
                     <div
-                        class="hidden md:flex absolute right-0 bottom-0 w-[50%] max-w-sm h-full max-h-[155px] flex-col bg-[#0b0e14] border-l border-t border-cyan-500/30 rounded-tl-xl rounded-br-[22px] shadow-2xl transition-all duration-500 group-hover/ui:-translate-x-3 group-hover/ui:-translate-y-3 group-hover/ui:border-cyan-400/50 z-0 overflow-hidden"
+                        class="hidden md:flex absolute right-0 bottom-0 w-[50%] max-w-sm h-full max-h-[155px] flex-col bg-[#0b0e14] border-l border-t border-cyan-500/30 rounded-tl-xl rounded-br-[22px] shadow-2xl transition-all duration-500 group-hover/ui:-translate-x-3 group-data-[mobile-active=true]/ui:-translate-x-3 group-hover/ui:-translate-y-3 group-data-[mobile-active=true]/ui:-translate-y-3 group-hover/ui:border-cyan-400/50 group-data-[mobile-active=true]/ui:border-cyan-400/50 z-0 overflow-hidden"
                     >
                         <!-- Mac-style Window header -->
                         <div
@@ -306,7 +307,7 @@
 
                             <!-- Fake computer vision tracking box -->
                             <div
-                                class="absolute w-16 h-16 border-2 border-emerald-500 rounded-md top-1/2 left-1/3 -translate-y-1/2 -translate-x-1/2 group-hover/ui:left-[60%] group-hover/ui:w-20 group-hover/ui:h-20 transition-all duration-1000 ease-in-out"
+                                class="absolute w-16 h-16 border-2 border-emerald-500 rounded-md top-1/2 left-1/3 -translate-y-1/2 -translate-x-1/2 group-hover/ui:left-[60%] group-data-[mobile-active=true]/ui:left-[60%] group-hover/ui:w-20 group-data-[mobile-active=true]/ui:w-20 group-hover/ui:h-20 group-data-[mobile-active=true]/ui:h-20 transition-all duration-1000 ease-in-out"
                             >
                                 <span
                                     class="absolute -top-4 left-[-2px] text-[8px] bg-emerald-500 text-gray-900 px-1 font-bold rounded-sm shadow-sm backdrop-blur"
@@ -316,7 +317,7 @@
 
                             <!-- Static Element Tracker -->
                             <div
-                                class="absolute w-10 h-10 border-2 border-cyan-500/50 border-dashed rounded-md top-[20%] right-[15%] group-hover/ui:rotate-12 transition-transform duration-1000"
+                                class="absolute w-10 h-10 border-2 border-cyan-500/50 border-dashed rounded-md top-[20%] right-[15%] group-hover/ui:rotate-12 group-data-[mobile-active=true]/ui:rotate-12 transition-transform duration-1000"
                             ></div>
 
                             <!-- Overlay Stats -->
@@ -344,7 +345,7 @@
                     title="Real-Time Variable Tuning"
                     desc="Adjust pipeline variables on the fly and see their effect instantly without recompiling."
                     color="purple"
-                    class="group/tune hover:border-purple-500/50"
+                    class="group/tune hover:border-purple-500/50 data-[mobile-active=true]:border-purple-500/50"
                 >
                     <div class="mt-auto pt-6">
                         <div
@@ -356,7 +357,7 @@
                                 >
                                     <span>blurRadius</span>
                                     <span
-                                        class="text-purple-400 group-hover/tune:text-purple-300 transition-colors w-8 text-right"
+                                        class="text-purple-400 group-hover/tune:text-purple-300 group-data-[mobile-active=true]/tune:text-purple-300 transition-colors w-8 text-right"
                                         >3.5</span
                                     >
                                 </div>
@@ -364,7 +365,7 @@
                                     class="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden"
                                 >
                                     <div
-                                        class="h-full bg-purple-500/60 w-[35%] group-hover/tune:w-[75%] transition-all duration-1000 ease-out relative"
+                                        class="h-full bg-purple-500/60 w-[35%] group-hover/tune:w-[75%] group-data-[mobile-active=true]/tune:w-[75%] transition-all duration-1000 ease-out relative"
                                     >
                                         <div
                                             class="absolute right-0 top-0 bottom-0 w-1.5 bg-purple-400 rounded-full"
@@ -379,7 +380,7 @@
                                 >
                                     <span>threshold</span>
                                     <span
-                                        class="text-emerald-400 group-hover/tune:text-emerald-300 transition-colors w-8 text-right"
+                                        class="text-emerald-400 group-hover/tune:text-emerald-300 group-data-[mobile-active=true]/tune:text-emerald-300 transition-colors w-8 text-right"
                                         >128</span
                                     >
                                 </div>
@@ -387,7 +388,7 @@
                                     class="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden"
                                 >
                                     <div
-                                        class="h-full bg-emerald-500/60 w-[60%] group-hover/tune:w-[25%] transition-all duration-1000 ease-out relative"
+                                        class="h-full bg-emerald-500/60 w-[60%] group-hover/tune:w-[25%] group-data-[mobile-active=true]/tune:w-[25%] transition-all duration-1000 ease-out relative"
                                     >
                                         <div
                                             class="absolute right-0 top-0 bottom-0 w-1.5 bg-emerald-400 rounded-full"
@@ -423,7 +424,7 @@
                         >
                             <!-- Mock Node 1 -->
                             <div
-                                class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 transition-transform duration-500 backdrop-blur-md relative z-10"
+                                class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 group-data-[mobile-active=true]/pv:-translate-y-1 transition-transform duration-500 backdrop-blur-md relative z-10"
                             >
                                 <div
                                     class="hidden md:block absolute right-[-6px] top-[16px] w-2.5 h-2.5 bg-rose-500 rounded-full border border-gray-800"
@@ -443,10 +444,10 @@
 
                             <!-- Mock Node 2 -->
                             <div
-                                class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 transition-transform duration-500 delay-75 backdrop-blur-md relative z-10 ml-8 md:ml-0 md:mt-10"
+                                class="bg-gray-800/90 border border-gray-700 p-3 rounded-xl min-w-[160px] shadow-2xl group-hover/pv:-translate-y-1 group-data-[mobile-active=true]/pv:-translate-y-1 transition-transform duration-500 delay-75 backdrop-blur-md relative z-10 ml-8 md:ml-0 md:mt-10"
                             >
                                 <div
-                                    class="hidden md:block absolute left-[-6px] top-[16px] w-2.5 h-2.5 bg-rose-500 rounded-full border border-gray-800 opacity-50 group-hover/pv:opacity-100 transition-opacity"
+                                    class="hidden md:block absolute left-[-6px] top-[16px] w-2.5 h-2.5 bg-rose-500 rounded-full border border-gray-800 opacity-50 group-hover/pv:opacity-100 group-data-[mobile-active=true]/pv:opacity-100 transition-opacity"
                                 ></div>
                                 <div
                                     class="bg-blue-500/20 text-blue-400 text-[9px] uppercase font-bold tracking-wider px-2 py-1 rounded inline-block mb-3"
@@ -483,11 +484,11 @@
                             >AprilTagProcessor</span
                         >
                         <span
-                            class="px-3 py-1.5 bg-gray-800 border border-gray-700 text-gray-400 group-hover:text-gray-300 text-xs font-mono rounded-lg shadow-sm"
+                            class="px-3 py-1.5 bg-gray-800 border border-gray-700 text-gray-400 group-hover:text-gray-300 group-data-[mobile-active=true]:text-gray-300 text-xs font-mono rounded-lg shadow-sm"
                             >VisionPortal.Builder</span
                         >
                         <span
-                            class="px-3 py-1.5 bg-gray-800 border border-gray-700 text-gray-400 group-hover:text-gray-300 text-xs font-mono rounded-lg shadow-sm"
+                            class="px-3 py-1.5 bg-gray-800 border border-gray-700 text-gray-400 group-hover:text-gray-300 group-data-[mobile-active=true]:text-gray-300 text-xs font-mono rounded-lg shadow-sm"
                             >Detection</span
                         >
                     </div>

@@ -2,7 +2,7 @@ import { page } from '$app/stores';
 import { get } from 'svelte/store';
 import { PUBLIC_MEDIA_BASE } from '$env/static/public';
 
-export const m = (path: string) => {
+export const m = (path: string, overridePrefix?: string) => {
     let prefix = "";
     let cleanPath = path;
 
@@ -13,16 +13,18 @@ export const m = (path: string) => {
     } else if (!path.startsWith('http')) {
         try {
             const $page = get(page);
-            if ($page && $page.url) {
-                let urlPath = $page.url.pathname.replace(/^\/|\/$/g, '');
+            if ($page) {
+                const urlPath = overridePrefix ?? $page.data?.mediaPrefix ?? $page.data?.mediaFolder ?? ($page.url ? $page.url.pathname.replace(/^\/|\/$/g, '') : '');
 
-                // If we are in a subroute, use it as a prefix for relative paths
+                // If we are in a subroute (or have a custom prefix), use it as a prefix for relative paths
                 if (urlPath && !path.startsWith(urlPath + '/')) {
                     prefix = `${urlPath}/`;
                 }
             }
         } catch (e) {
-            // Fallback for non-component/non-request contexts
+            if (overridePrefix) {
+                prefix = `${overridePrefix}/`;
+            }
         }
     }
 
