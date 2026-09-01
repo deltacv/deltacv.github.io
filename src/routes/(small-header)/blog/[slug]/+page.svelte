@@ -133,6 +133,60 @@
 
 <svelte:window on:scroll={() => {}} />
 
+<svelte:head>
+  <title>{title ? `${title} - deltacv blog` : 'deltacv blog'}</title>
+  {#if description}
+    <meta name="description" content={description} />
+  {/if}
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title || 'deltacv blog'} />
+  {#if description}
+    <meta property="og:description" content={description} />
+  {/if}
+  <meta property="og:url" content={`https://deltacv.org/blog/${params.slug}`} />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content={title || 'deltacv blog'} />
+  {#if description}
+    <meta property="twitter:description" content={description} />
+  {/if}
+
+  <link rel="canonical" href={`https://deltacv.org/blog/${params.slug}`} />
+
+  <!-- JSON-LD Structured Data for Google -->
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  {@html `<script type="application/ld+json">
+    ${JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": title || "",
+      "description": description || "",
+      "datePublished": date || "",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://deltacv.org/blog/${params.slug}`
+      },
+      "url": `https://deltacv.org/blog/${params.slug}`,
+      "author": authorData ? {
+        "@type": "Person",
+        "name": authorData.name,
+        "url": `https://deltacv.org${authorData.href}`
+      } : {
+        "@type": "Organization",
+        "name": "deltacv"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "deltacv",
+        "url": "https://deltacv.org"
+      }
+    })}
+  </script>`}
+</svelte:head>
+
 <main in:blur={{ duration: 300 }}>
   <div class="toc-container" class:visible={hasHeadings}>
     <TableOfContents {headings} {activeHeadingId} />

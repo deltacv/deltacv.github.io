@@ -16,7 +16,7 @@ const authors = Object.entries(authorModules).map(([path, mod]: [string, any]) =
 export const load: PageLoad = ({ params }) => {
     const match = authors.find(a => a.shortSlash === params.username);
     if (match) {
-        redirect(302, match.href);
+        redirect(301, match.href);
     }
     error(404, 'Not Found');
 };

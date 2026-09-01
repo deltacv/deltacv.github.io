@@ -29,6 +29,7 @@
         name="description"
         content="Sebastian Erives is a software developer and founder of deltacv, building computer vision tools, Android apps, and Kotlin/Java developer experiences."
     />
+    <link rel="canonical" href="https://deltacv.org/people/serivesmejia" />
 </svelte:head>
 
 <main>

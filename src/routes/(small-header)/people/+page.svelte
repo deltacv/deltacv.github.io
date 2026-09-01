@@ -31,6 +31,7 @@
         name="description"
         content="Meet the open source developers behind deltacv — building computer vision tools, robotics software, and visual programming interfaces."
     />
+    <link rel="canonical" href="https://deltacv.org/people" />
 </svelte:head>
 
 {#if mounted}
