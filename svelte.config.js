@@ -13,7 +13,13 @@ const config = {
 			extensions: ['.svx'],
 		})
 	],
-	kit: { adapter: adapter() },
+	kit: {
+		adapter: adapter(),
+		prerender: {
+			handleUnseenRoutes: 'ignore',
+			entries: ['*', '/sitemap.xml']
+		}
+	},
 	extensions: ['.svelte', '.svx']
 };
 
