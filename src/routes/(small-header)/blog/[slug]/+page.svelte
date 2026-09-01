@@ -14,7 +14,7 @@
   const PostComponent = mod.default;
 
   // --- Get Metadata ---
-  const { title, date, author, tags } = mod.metadata || {};
+  const { title, date, author, tags, description } = mod.metadata || {};
   /** @type {string[]} */
   const postTags = Array.isArray(tags) ? tags : [];
 
